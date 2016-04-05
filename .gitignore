@@ -2,13 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.sqlite
 
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
-env/
+ENV/
 build/
 develop-eggs/
 dist/
@@ -20,6 +21,7 @@ lib64/
 parts/
 sdist/
 var/
+migrations/
 *.egg-info/
 .installed.cfg
 *.egg
