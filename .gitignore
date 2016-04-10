@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 *.sqlite
 *.sh
+.DS_Store
 
 # C extensions
 *.so
