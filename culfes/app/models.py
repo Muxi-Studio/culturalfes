@@ -11,6 +11,12 @@ from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
 from wtforms.validators import Email
+from datetime import datetime
+from markdown import markdown
+from flask import url_for, current_app
+from app.exceptions import ValidationError
+import bleach
+
 
 # permissions
 class Permission:
@@ -104,5 +110,237 @@ class AnonymousUser(AnonymousUserMixin):
 
 login_manager.anonymous_user = AnonymousUser
 
-# you can writing your models here:
 
+class Movie(db.Model):
+    """movies"""
+    __tablename__ = 'movies'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    movie_url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_movie = {
+                'url': url_for('api.get_moive', id=self.id, _external=True),
+                'body': self.body,
+                'body_html': self.body_html,
+                'movie_url': self.movie_url,
+                'timestamp': self.timestamp,
+                'author_name': self.author_name,
+                'loved_count': self.loved_count
+                }
+        return json_movie
+
+    @staticmethod
+    def from_json(json_movie):
+        body = json_movie.get('body')
+        if body is None or body == '':
+            raise ValidationError('Movie has no body')
+        return Movie(body=body)
+
+    def __repr__(self):
+        return "<Movie %r>" % self.id
+
+
+db.event.listen(Movie.body, 'set', Movie.on_changed_body)
+
+
+class Article(db.Model):
+    """articles"""
+    __tablename__ = 'articles'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    article_url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_article = {
+                'url': url_for('api.get_moive', id=self.id, _external=True),
+                'body': self.body,
+                'body_html': self.body_html,
+                'article_url': self.article_url,
+                'timestamp': self.timestamp,
+                'author_name': self.author_name,
+                'loved_count': self.loved_count
+                }
+        return json_article
+
+    @staticmethod
+    def from_json(json_article):
+        body = json_article.get('body')
+        if body is None or body == '':
+            raise ValidationError('Article has no body')
+        return Article(body=body)
+
+    def __repr__(self):
+        return "<Article %r>" % self.id
+
+
+db.event.listen(Article.body, 'set', Article.on_changed_body)
+
+
+class Photo(db.Model):
+    """photos"""
+    __tablename__ = 'photos'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    photo_url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_photo = {
+                'url': url_for('api.get_moive', id=self.id, _external=True),
+                'body': self.body,
+                'body_html': self.body_html,
+                'photo_url': self.photo_url,
+                'timestamp': self.timestamp,
+                'author_name': self.author_name,
+                'loved_count': self.loved_count
+                }
+        return json_photo
+
+    @staticmethod
+    def from_json(json_photo):
+        body = json_photo.get('body')
+        if body is None or body == '':
+            raise ValidationError('Photo has no body')
+        return Photo(body=body)
+
+    def __repr__(self):
+        return "<Photo %r>" % self.id
+
+
+db.event.listen(Photo.body, 'set', Photo.on_changed_body)
+
+
+class Anime(db.Model):
+    """animes"""
+    __tablename__ = 'animes'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    anime_url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_anime = {
+                'url': url_for('api.get_moive', id=self.id, _external=True),
+                'body': self.body,
+                'body_html': self.body_html,
+                'anime_url': self.anime_url,
+                'timestamp': self.timestamp,
+                'author_name': self.author_name,
+                'loved_count': self.loved_count
+                }
+        return json_anime
+
+    @staticmethod
+    def from_json(json_anime):
+        body = json_anime.get('body')
+        if body is None or body == '':
+            raise ValidationError('Anime has no body')
+        return Anime(body=body)
+
+    def __repr__(self):
+        return "<Anime %r>" % self.id
+
+
+db.event.listen(Anime.body, 'set', Anime.on_changed_body)
+
+
+class Class(db.Model):
+    """classes"""
+    __tablename__ = 'classes'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    class_url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_class = {
+                'url': url_for('api.get_class', id=self.id, _external=True),
+                'body': self.body,
+                'body_html': self.body_html,
+                'class_url': self.class_url,
+                'timestamp': self.timestamp,
+                'author_name': self.author_name,
+                'loved_count': self.loved_count
+                }
+        return json_class
+
+    @staticmethod
+    def from_json(json_class):
+        body = json_class.get('body')
+        if body is None or body == '':
+            raise ValidationError('Class has no body')
+        return Class(body=body)
+
+    def __repr__(self):
+        return "<Class %r>" % self.id
+
+
+db.event.listen(Class.body, 'set', Class.on_changed_body)
