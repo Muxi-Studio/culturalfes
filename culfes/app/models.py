@@ -116,6 +116,7 @@ class Movie(db.Model):
     __tablename__ = 'movies'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(164))
+    tag = 'movie'
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     movie_url = db.Column(db.Text)
@@ -162,6 +163,7 @@ class Article(db.Model):
     """articles"""
     __tablename__ = 'articles'
     id = db.Column(db.Integer, primary_key=True)
+    tag = 'article'
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
@@ -209,6 +211,7 @@ class Photo(db.Model):
     """photos"""
     __tablename__ = 'photos'
     id = db.Column(db.Integer, primary_key=True)
+    tag = 'photo'
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
@@ -256,6 +259,7 @@ class Anime(db.Model):
     """animes"""
     __tablename__ = 'animes'
     id = db.Column(db.Integer, primary_key=True)
+    tag = 'anime'
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
@@ -303,6 +307,7 @@ class Class(db.Model):
     """classes"""
     __tablename__ = 'classes'
     id = db.Column(db.Integer, primary_key=True)
+    tag = 'class'
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
