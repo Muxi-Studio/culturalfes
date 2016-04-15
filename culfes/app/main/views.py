@@ -17,17 +17,17 @@ def index():
     return render_template('/main/index.html')
 
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/up/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            return redirect(url_for('upload_file', filename=filename))
-    return render_template('upload_file')
+            return redirect(url_for('main.upload_file', filename=filename))
+    return render_template('/main/upload_file.html')
 
 
-@app.route('/uploads/<filename>')
+@main.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(UPLOAD_FOLDER,filename)
