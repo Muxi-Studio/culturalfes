@@ -3,7 +3,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_debugtoolbar import DebugToolbarExtension
+#from flask_debugtoolbar import DebugToolbarExtension
 from config import config
 
 
@@ -19,7 +19,7 @@ config
 config_name = 'default'
 app.config.from_object(config[config_name])
 config[config_name].init_app(app)
-toolbar = DebugToolbarExtension(app)
+#toolbar = DebugToolbarExtension(app)
 
 
 db = SQLAlchemy(app)
