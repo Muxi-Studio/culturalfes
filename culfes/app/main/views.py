@@ -24,6 +24,7 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         tag = request.form.get('tag')
+        athor_name = request.form.get('author_name')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             if tag == 'movie':
@@ -31,6 +32,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Movie(
                         name=filename,
+                        author_name=author_name
                         url=UPLOAD_FOLDER
                         )
             elif tag == 'article':
@@ -38,6 +40,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Article(
                         name=filename,
+                        author_name=author_name
                         url=UPLOAD_FOLDER
                         )
             elif tag == 'photo':
@@ -45,6 +48,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Photo(
                         name=filename,
+                        author_name=author_name
                         url=UPLOAD_FOLDER
                         )
             elif tag == 'anime':
@@ -53,12 +57,14 @@ def upload_file():
                 item = Anime(
                         name=filename,
                         url=UPLOAD_FOLDER
+                        author_name=author_name
                         )
             elif tag == 'course':
                 UPLOAD_FOLDER = os.path.join(BUPLOAD_FOLDER, 'course')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Course(
                         name=filename,
+                        author_name=author_name
                         url=UPLOAD_FOLDER
                         )
         else:
@@ -104,22 +110,53 @@ def photos():
 @main.route('/movie/<int:id>/')
 def get_movie(id):
     movie = Movie.query.get_or_404(id)
+    if request.method == 'POST':
+        movie.liked_count += 1
+        db.session.commit()
+        flash("投票成功")
+        return redirect(url_for('main.get_movie'))
     return render_template('movie.html', movie=movie)
 
 
 @main.route('/article/<int:id>/')
 def get_article(id):
     article = Article.query.get_or_404(id)
+    if request.method == 'POST':
+        article.liked_count += 1
+        db.session.commit()
+        flash("投票成功")
+        return redirect(url_for('main.get_article'))
     return render_template('article.html', article=article)
 
 
 @main.route('/anime/<int:id>/')
 def get_anime(id):
     anime = Anime.query.get_or_404(id)
+    if request.method == 'POST':
+        anime.liked_count += 1
+        db.session.commit()
+        flash("投票成功")
+        return redirect(url_for('main.get_anime'))
     return render_template('anime.html', anime=anime)
 
 
 @main.route('/course/<int:id>/')
 def get_course(id):
     course = Course.query.get_or_404(id)
+    if request.method == 'POST':
+        course.liked_count += 1
+        db.session.commit()
+        flash("投票成功")
+        return redirect(url_for('main.get_course'))
     return render_template('course.html', course=course)
+
+
+@main.route('/photo/<int:id>/')
+def get_photo(id):
+    photo = Photo.query.get_or_404(id)
+    if request.method == 'POST':
+        photo.liked_count += 1
+        db.session.commit()
+        flash("投票成功")
+        return redirect(url_for('main.get_photo'))
+    return render_template('photo.html', photo=photo)
