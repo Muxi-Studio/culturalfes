@@ -111,10 +111,11 @@ class AnonymousUser(AnonymousUserMixin):
 login_manager.anonymous_user = AnonymousUser
 
 
-class Item(db.Model):
-    """items"""
-    __tablename__ = 'items'
+class Movie(db.Model):
+    """movies"""
+    __tablename__ = 'movies'
     id = db.Column(db.Integer, primary_key=True)
+    tag = 'movie'
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
@@ -133,14 +134,6 @@ class Item(db.Model):
             tags=allowed_tags, strip=True))
 
 
-db.event.listen(Item.body, 'set', Item.on_changed_body)
-
-
-class Movie(Item):
-    """movies"""
-    __tablename__ = 'movies'
-    tag = 'movie'
-
     def __repr__(self):
         return "<Movie %r>" % self.id
 
@@ -148,10 +141,27 @@ class Movie(Item):
 db.event.listen(Movie.body, 'set', Movie.on_changed_body)
 
 
-class Anime(Item):
+class Anime(db.Model):
     """animes"""
     __tablename__ = 'animes'
+    id = db.Column(db.Integer, primary_key=True)
     tag = 'anime'
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
 
     def __repr__(self):
         return "<Anime %r>" % self.id
@@ -160,10 +170,27 @@ class Anime(Item):
 db.event.listen(Anime.body, 'set', Anime.on_changed_body)
 
 
-class Article(Item):
+class Article(db.Model):
     """articles"""
     __tablename__ = 'articles'
+    id = db.Column(db.Integer, primary_key=True)
     tag = 'article'
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
 
     def __repr__(self):
         return "<Article %r>" % self.id
@@ -172,10 +199,27 @@ class Article(Item):
 db.event.listen(Article.body, 'set', Article.on_changed_body)
 
 
-class Course(Item):
+class Course(db.Model):
     """courses"""
     __tablename__ = 'courses'
+    id = db.Column(db.Integer, primary_key=True)
     tag = 'course'
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
 
     def __repr__(self):
         return "<Course %r>" % self.id
@@ -184,10 +228,27 @@ class Course(Item):
 db.event.listen(Course.body, 'set', Course.on_changed_body)
 
 
-class Photo(Item):
+class Photo(db.Model):
     """photos"""
     __tablename__ = 'photos'
+    id = db.Column(db.Integer, primary_key=True)
     tag = 'photo'
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    url = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_name = db.Column(db.String(164))
+    liked_count = db.Column(db.Integer, default=0)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
 
     def __repr__(self):
         return "<Photo %r>" % self.id
