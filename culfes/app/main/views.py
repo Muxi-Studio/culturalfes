@@ -61,12 +61,11 @@ def upload_file():
                         name=filename,
                         url=UPLOAD_FOLDER
                         )
-            else:
-                flash("Bad File!")
-                return redirect(url_for('main.upload_file'))
-            db.session.add(item)
-            db.session.commit()
-            flash("文件已上传")
-            #return redirect(url_for('main.upload_file'))
+        else:
+            flash("Bad File!")
+            return redirect(url_for('main.upload_file'))
+        db.session.add(item)
+        db.session.commit()
+        flash("文件已上传")
         return redirect(url_for('main.upload_file'))
     return render_template('/main/upload_file.html')
