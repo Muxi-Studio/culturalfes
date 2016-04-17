@@ -69,3 +69,57 @@ def upload_file():
         flash("文件已上传")
         return redirect(url_for('main.upload_file'))
     return render_template('/main/upload_file.html')
+
+
+@main.route('/movies/')
+def movies():
+    movies = Movie.query.all()
+    return render_template('items.html', movies=movies)
+
+
+@main.route('/articles/')
+def articles():
+    articles = Article.query.all()
+    return render_template('items.html', articles=articles)
+
+
+@main.route('/courses/')
+def courses():
+    courses = Courses.query.all()
+    return render_template('items.html', courses=courses)
+
+
+@main.route('/animes/')
+def animes():
+    animes = Anime.query.all()
+    return render_template('items.html', animes=animes)
+
+
+@main.route('/photos/')
+def photos():
+    photos = Photo.query.all()
+    return render_template('items.html', photos=photos)
+
+
+@main.route('/movie/<int:id>/')
+def get_movie(id):
+    movie = Movie.query.get_or_404(id)
+    return render_template('movie.html', movie=movie)
+
+
+@main.route('/article/<int:id>/')
+def get_article(id):
+    article = Article.query.get_or_404(id)
+    return render_template('article.html', article=article)
+
+
+@main.route('/anime/<int:id>/')
+def get_anime(id):
+    anime = Anime.query.get_or_404(id)
+    return render_template('anime.html', anime=anime)
+
+
+@main.route('/course/<int:id>/')
+def get_course(id):
+    course = Course.query.get_or_404(id)
+    return render_template('course.html', course=course)
