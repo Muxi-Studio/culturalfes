@@ -115,7 +115,7 @@ def photos():
     return render_template('items.html', photos=photos)
 
 
-@main.route('/movie/<int:id>/')
+@main.route('/movie/<int:id>/', methods=["GET", "POST"])
 def get_movie(id):
     movie = Movie.query.get_or_404(id)
     if request.method == 'POST':
@@ -126,7 +126,7 @@ def get_movie(id):
     return render_template('movie.html', movie=movie)
 
 
-@main.route('/article/<int:id>/')
+@main.route('/article/<int:id>/', methods=["GET", "POST"])
 def get_article(id):
     article = Article.query.get_or_404(id)
     if request.method == 'POST':
@@ -137,7 +137,7 @@ def get_article(id):
     return render_template('article.html', article=article)
 
 
-@main.route('/anime/<int:id>/')
+@main.route('/anime/<int:id>/', methods=["GET", "POST"])
 def get_anime(id):
     anime = Anime.query.get_or_404(id)
     if request.method == 'POST':
@@ -148,7 +148,7 @@ def get_anime(id):
     return render_template('anime.html', anime=anime)
 
 
-@main.route('/course/<int:id>/')
+@main.route('/course/<int:id>/', methods=["GET", "POST"])
 def get_course(id):
     course = Course.query.get_or_404(id)
     if request.method == 'POST':
@@ -159,7 +159,7 @@ def get_course(id):
     return render_template('course.html', course=course)
 
 
-@main.route('/photo/<int:id>/')
+@main.route('/photo/<int:id>/', methods=["GET", "POST"])
 def get_photo(id):
     photo = Photo.query.get_or_404(id)
     if request.method == 'POST':
