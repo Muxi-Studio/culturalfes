@@ -1,0 +1,11 @@
+<html>
+    <title>RANK</title>
+    <head>rank page</head>
+    {% for movie in movies %}
+    <li>
+        <p>{{ movie.name }}</p>
+        <p>{{ movie.author_name }}</p>
+        <p>{{ movie.liked_count }}</p>
+    </li>
+    {% endfor %}
+</html>

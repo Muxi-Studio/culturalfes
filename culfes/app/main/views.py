@@ -32,7 +32,7 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         tag = request.form.get('tag')
-        athor_name = request.form.get('author_name')
+        author_name = request.form.get('author_name')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             if tag == 'movie':
@@ -85,34 +85,19 @@ def upload_file():
     return render_template('/main/upload_file.html')
 
 
-@main.route('/movies/')
-def movies():
+@main.route('/rank/')
+def rank():
     movies = Movie.query.all()
-    return render_template('items.html', movies=movies)
-
-
-@main.route('/articles/')
-def articles():
     articles = Article.query.all()
-    return render_template('items.html', articles=articles)
-
-
-@main.route('/courses/')
-def courses():
-    courses = Courses.query.all()
-    return render_template('items.html', courses=courses)
-
-
-@main.route('/animes/')
-def animes():
     animes = Anime.query.all()
-    return render_template('items.html', animes=animes)
-
-
-@main.route('/photos/')
-def photos():
     photos = Photo.query.all()
-    return render_template('items.html', photos=photos)
+    courses = Course.query.all()
+    sorted_movies = sorted(movies, key=lambda movie: movie.liked_count, reverse=True)
+    sorted_animes = sorted(animes, key=lambda anime: anime.liked_count, reverse=True)
+    sorted_articles = sorted(articles, key=lambda article: article.liked_count, reverse=True)
+    sorted_photos = sorted(photos, key=lambda photo: photo.liked_count, reverse=True)
+    sorted_courses = sorted(courses, key=lambda course: course.liked_count, reverse=True)
+    return render_template('/main/rank.html', movies=sorted_movies, animes=animes, photos=photos, articles=articles, courses=courses)
 
 
 @main.route('/movie/<int:id>/', methods=["GET", "POST"])
