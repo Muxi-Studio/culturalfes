@@ -31,6 +31,10 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    ALLOWED_EXTENSIONS = ['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'avi']
+    BUPLOAD_FOLDER = '/Users/kasheemlew/Downloads/upload'
+    CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
+    PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
 
     @staticmethod
     def init_app(app):

@@ -36,13 +36,13 @@ import sys
 import os
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
-from app import db, app
+from app import app
+from app import db
 from app.models import User, Role, Movie, Article, Photo, Anime, Course
 
 # 编码设置
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
 
 manager = Manager(app)
 migrate = Migrate(app, db)

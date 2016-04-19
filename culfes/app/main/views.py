@@ -1,4 +1,5 @@
 # coding: utf-8
+from .. import app
 from . import main
 from ..models import Movie, Article, Photo, Anime, Course
 from app import db
@@ -9,17 +10,13 @@ import os
 import random
 
 
-BUPLOAD_FOLDER = '/Users/kasheemlew/Downloads/upload'
-ALLOWED_EXTENSIONS = ['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'avi']
-
-
-captcha_id = "b46d1900d0a894591916ea94ea91bd2c"
-private_key = "36fc3fe98530eea08dfc6ce76e3d24c4"
+captcha_id = app.config['CAPTCHA_ID']
+private_key = app.config['PRIVATE_KEY']
 
 
 def allowed_file(filename):
     if '.' in filename and \
-            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS:
+            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']:
                 return True
 
 @main.route('/')
@@ -36,7 +33,7 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             if tag == 'movie':
-                UPLOAD_FOLDER = os.path.join(BUPLOAD_FOLDER, 'movie')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Movie(
                         name=filename,
