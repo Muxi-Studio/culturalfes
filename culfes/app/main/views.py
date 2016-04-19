@@ -102,6 +102,7 @@ def get_movie(id):
     movie = Movie.query.get_or_404(id)
     if request.method == 'POST':
         movie.liked_count += 1
+        db.session.add(movie)
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_movie'))
@@ -113,6 +114,7 @@ def get_article(id):
     article = Article.query.get_or_404(id)
     if request.method == 'POST':
         article.liked_count += 1
+        db.session.add(article)
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_article'))
@@ -124,6 +126,7 @@ def get_anime(id):
     anime = Anime.query.get_or_404(id)
     if request.method == 'POST':
         anime.liked_count += 1
+        db.session.add(anime)
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_anime'))
@@ -135,6 +138,7 @@ def get_course(id):
     course = Course.query.get_or_404(id)
     if request.method == 'POST':
         course.liked_count += 1
+        db.session.add(course)
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_course'))
@@ -146,6 +150,7 @@ def get_photo(id):
     photo = Photo.query.get_or_404(id)
     if request.method == 'POST':
         photo.liked_count += 1
+        db.session.add(photo)
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_photo'))
