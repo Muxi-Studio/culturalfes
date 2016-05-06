@@ -112,8 +112,7 @@ login_manager.anonymous_user = AnonymousUser
 
 class Base(object):
     id = db.Column(db.Integer, primary_key=True)
-    tag = 'movie'
-    name = db.Column(db.String(164))
+    name = db.Column(db.Text)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     url = db.Column(db.Text)
@@ -134,6 +133,7 @@ class Base(object):
 class Movie(db.Model, Base):
     """movies"""
     __tablename__ = 'movies'
+    tag = 'movie'
 
     def __repr__(self):
         return "<Movie %r>" % self.name
@@ -145,6 +145,7 @@ db.event.listen(Movie.body, 'set', Movie.on_changed_body)
 class Anime(db.Model, Base):
     """animes"""
     __tablename__ = 'animes'
+    tag = 'anime'
 
     def __repr__(self):
         return "<Anime %r>" % self.id
@@ -156,6 +157,7 @@ db.event.listen(Anime.body, 'set', Anime.on_changed_body)
 class Article(db.Model, Base):
     """articles"""
     __tablename__ = 'articles'
+    tag = 'article'
 
     def __repr__(self):
         return "<Article %r>" % self.id
@@ -167,6 +169,7 @@ db.event.listen(Article.body, 'set', Article.on_changed_body)
 class Course(db.Model, Base):
     """courses"""
     __tablename__ = 'courses'
+    tag = 'course'
 
     def __repr__(self):
         return "<Course %r>" % self.id
@@ -178,9 +181,20 @@ db.event.listen(Course.body, 'set', Course.on_changed_body)
 class Photo(db.Model, Base):
     """photos"""
     __tablename__ = 'photos'
+    tag = 'photo'
 
     def __repr__(self):
         return "<Photo %r>" % self.id
 
 
 db.event.listen(Photo.body, 'set', Photo.on_changed_body)
+
+
+class Notice(object):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(164))
+    body = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return "<Notice %r>" % self.id

@@ -6,6 +6,7 @@ from app import db
 from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
 from geetest import GeetestLib
 from werkzeug import secure_filename
+import time
 import os
 import random
 
@@ -29,48 +30,50 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         tag = request.form.get('tag')
+        file_name = request.form.get('file_name')
         author_name = request.form.get('author_name')
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
+            filename = time.strftime("%a %b %d %H:%M:%S %Y",
+                    time.localtime()) + ' ' + file_name + '.' + file.filename.rsplit('.', 1)[1]
             if tag == 'movie':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Movie(
                         name=filename,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER
+                        url=UPLOAD_FOLDER + filename
                         )
             elif tag == 'article':
-                UPLOAD_FOLDER = os.path.join(BUPLOAD_FOLDER, 'article')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'article')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Article(
                         name=filename,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER
+                        url=UPLOAD_FOLDER + filename
                         )
             elif tag == 'photo':
-                UPLOAD_FOLDER = os.path.join(BUPLOAD_FOLDER, 'photo')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'photo')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Photo(
                         name=filename,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER
+                        url=UPLOAD_FOLDER + filename
                         )
             elif tag == 'anime':
-                UPLOAD_FOLDER = os.path.join(BUPLOAD_FOLDER, 'anime')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'anime')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Anime(
                         name=filename,
-                        url=UPLOAD_FOLDER,
+                        url=UPLOAD_FOLDER + filename,
                         author_name=author_name
                         )
             elif tag == 'course':
-                UPLOAD_FOLDER = os.path.join(BUPLOAD_FOLDER, 'course')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Course(
                         name=filename,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER
+                        url=UPLOAD_FOLDER + filename
                         )
         else:
             flash("Bad File!")
@@ -80,6 +83,12 @@ def upload_file():
         flash("文件已上传")
         return redirect(url_for('main.upload_file'))
     return render_template('/main/upload_file.html')
+
+
+@main.route('/notices/')
+def notices():
+    notices = Notice.query.all()
+    return render_template('/main/notices.html', notices=notices)
 
 
 @main.route('/rank/')
