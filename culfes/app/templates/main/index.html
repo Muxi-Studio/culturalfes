@@ -1,4 +1,11 @@
 {% extends "/main/base.html" %}
 {% block title %}Index title{% endblock %}
 {% block head %}<h1>Index head</h1>{{ super() }}{% endblock %}
-{% block body %}Index body{% endblock %}
+{% block body %}
+    <h2>Movie</h2>
+    {% for movie in movies[::-1] %}
+    <h5>{{ movie.name }}</h5>
+    <span>{{ movie.author }}</span>
+    <span>{{ movie.timestamp }}</span>
+    {% endfor %}
+{% endblock %}

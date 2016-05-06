@@ -1,0 +1,9 @@
+{% extends "main/layout.html" %}
+{% block body %}
+<h3>名称：{{ movie.name }}</h3>
+<span>作者：{{ movie.author_name }}</span>
+<span>点赞数：{{ movie.liked_count }}</span>
+<form action="" method="POST">
+    <input type="submit" value="投票"></input>
+</form>
+{% endblock %}

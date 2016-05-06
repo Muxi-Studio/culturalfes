@@ -22,7 +22,13 @@ def allowed_file(filename):
 
 @main.route('/')
 def index():
-    return render_template('/main/index.html')
+    movies = Movie.query.all()
+    courses = Course.query.all()
+    animes = Anime.query.all()
+    photos = Photo.query.all()
+    articles = Article.query.all()
+    return render_template('/main/index.html', movies=movies, courses=courses,
+            animes=animes, photos=photos, articles=articles)
 
 
 @main.route('/upload/', methods=['GET', 'POST'])
@@ -114,8 +120,8 @@ def get_movie(id):
         db.session.add(movie)
         db.session.commit()
         flash("投票成功")
-        return redirect(url_for('main.get_movie'))
-    return render_template('movie.html', movie=movie)
+        return redirect(url_for('main.get_movie', id=movie.id))
+    return render_template('main/movie.html', movie=movie)
 
 
 @main.route('/article/<int:id>/', methods=["GET", "POST"])
@@ -127,7 +133,7 @@ def get_article(id):
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_article'))
-    return render_template('article.html', article=article)
+    return render_template('main/article.html', article=article)
 
 
 @main.route('/anime/<int:id>/', methods=["GET", "POST"])
@@ -139,7 +145,7 @@ def get_anime(id):
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_anime'))
-    return render_template('anime.html', anime=anime)
+    return render_template('main/anime.html', anime=anime)
 
 
 @main.route('/course/<int:id>/', methods=["GET", "POST"])
@@ -151,7 +157,7 @@ def get_course(id):
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_course'))
-    return render_template('course.html', course=course)
+    return render_template('main/course.html', course=course)
 
 
 @main.route('/photo/<int:id>/', methods=["GET", "POST"])
@@ -163,7 +169,7 @@ def get_photo(id):
         db.session.commit()
         flash("投票成功")
         return redirect(url_for('main.get_photo'))
-    return render_template('photo.html', photo=photo)
+    return render_template('main/photo.html', photo=photo)
 
 
 @main.route('/captcha/')
