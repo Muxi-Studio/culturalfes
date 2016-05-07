@@ -97,6 +97,36 @@ def notices():
     return render_template('/main/notices.html', notices=notices)
 
 
+@main.route('/movies/')
+def movies():
+    movies = Movie.query.all()
+    return render_template('main/movies.html', movies=movies)
+
+
+@main.route('/animes/')
+def animes():
+    animes = Anime.query.all()
+    return render_template('main/animes.html', animes=animes)
+
+
+@main.route('/courses/')
+def courses():
+    courses = Course.query.all()
+    return render_template('main/courses.html', courses=courses)
+
+
+@main.route('/photos/')
+def photos():
+    photos = Photo.query.all()
+    return render_template('main/photos.html', photos=photos)
+
+
+@main.route('/articles/')
+def articles():
+    articles = Article.query.all()
+    return render_template('main/articles.html', articles=articles)
+
+
 @main.route('/rank/')
 def rank():
     movies = Movie.query.all()
