@@ -35,6 +35,7 @@ def index():
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
+        return file
         tag = request.form.get('tag')
         file_name = request.form.get('file_name')
         author_name = request.form.get('author_name')
