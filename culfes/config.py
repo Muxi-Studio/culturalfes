@@ -34,6 +34,7 @@ class Config:
     ALLOWED_EXTENSIONS = ['ppt', 'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'avi']
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
     BUPLOAD_FOLDER = '/Users/kasheemlew/Downloads/upload'
+    REDIS_URL = "redis://:password@localhost:6379/0"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
     PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
 
