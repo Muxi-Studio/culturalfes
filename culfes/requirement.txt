@@ -25,3 +25,4 @@ SQLAlchemy==1.0.12
 Werkzeug==0.11.8
 WTForms==2.1
 Flask_Redis==0.1.0
+PyMySQL==0.7.2
