@@ -1,6 +1,5 @@
 #!/bin/sh
 
-git clone https://github.com/GeeTeam/gt-python-sdk.git
 cd gt-python-sdk
 sudo python setup.py install
 cd ..

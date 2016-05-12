@@ -23,7 +23,6 @@ parts/
 sdist/
 var/
 migrations/
-gt-python-sdk/
 *.egg-info/
 .installed.cfg
 *.egg
