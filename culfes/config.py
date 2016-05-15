@@ -37,6 +37,8 @@ class Config:
     REDIS_URL = "redis://:password@localhost:6379/0"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
     PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
+    SHUO_SECRET = 'dfd72c59c44cff2a7124390b0edfb0cc'
+    DUOSHUO_SHORT_NAME = 'dmyzblog'
 
     @staticmethod
     def init_app(app):

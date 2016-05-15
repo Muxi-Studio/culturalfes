@@ -7,6 +7,22 @@
 		</div>
         <div class="second_content"><video src="{{ movie.url }}" controls="control"></video></div>
 	</div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="{{ movie.id }}" data-title="{{ movie.bname }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start  -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wenhuajie"};
+	    (function() {
+		    var ds = document.createElement('script');
+	    	ds.type = 'text/javascript';ds.async = true;
+    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    	ds.charset = 'UTF-8';
+		    (document.getElementsByTagName('head')[0] 
+    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	    })();
+    	</script>
+    <!-- 多说公共JS代码 end -->
 	<div class="c_container">
 	<div class="c_content">
 		<form method="post" action="/validate">
