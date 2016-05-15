@@ -44,7 +44,7 @@ def upload_file():
             if tag == 'movie':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = Movie(
+                item = W_Movie(
                         name=filename,
                         bname=file_name,
                         author_name=author_name,
@@ -54,7 +54,7 @@ def upload_file():
             elif tag == 'article':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'article')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = Article(
+                item = W_Article(
                         name=filename,
                         bname=file_name,
                         author_name=author_name,
@@ -64,7 +64,7 @@ def upload_file():
             elif tag == 'photo':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'photo')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = Photo(
+                item = W_Photo(
                         name=filename,
                         bname=file_name,
                         author_name=author_name,
@@ -74,7 +74,7 @@ def upload_file():
             elif tag == 'anime':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'anime')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = Anime(
+                item = W_Anime(
                         name=filename,
                         bname=file_name,
                         url=UPLOAD_FOLDER + filename,
@@ -84,7 +84,7 @@ def upload_file():
             elif tag == 'course':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = Course(
+                item = W_Course(
                         name=filename,
                         bname=file_name,
                         author_name=author_name,

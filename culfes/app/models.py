@@ -199,3 +199,63 @@ class Notice(object):
 
     def __repr__(self):
         return "<Notice %r>" % self.id
+
+
+class W_Movie(db.Model, Base):
+    """w_movies"""
+    __tablename__ = 'w_movies'
+    tag = 'w_movie'
+
+    def __repr__(self):
+        return "<W_Movie %r>" % self.name
+
+
+db.event.listen(W_Movie.body, 'set', W_Movie.on_changed_body)
+
+
+class W_Anime(db.Model, Base):
+    """w_animes"""
+    __tablename__ = 'w_animes'
+    tag = 'w_anime'
+
+    def __repr__(self):
+        return "<W_Anime %r>" % self.id
+
+
+db.event.listen(W_Anime.body, 'set', W_Anime.on_changed_body)
+
+
+class W_Article(db.Model, Base):
+    """w_articles"""
+    __tablename__ = 'w_articles'
+    tag = 'w_article'
+
+    def __repr__(self):
+        return "<W_Article %r>" % self.id
+
+
+db.event.listen(W_Article.body, 'set', W_Article.on_changed_body)
+
+
+class W_Course(db.Model, Base):
+    """w_courses"""
+    __tablename__ = 'w_courses'
+    tag = 'w_course'
+
+    def __repr__(self):
+        return "<W_Course %r>" % self.id
+
+
+db.event.listen(W_Course.body, 'set', W_Course.on_changed_body)
+
+
+class W_Photo(db.Model, Base):
+    """w_photos"""
+    __tablename__ = 'w_photos'
+    tag = 'w_photo'
+
+    def __repr__(self):
+        return "<W_Photo %r>" % self.id
+
+
+db.event.listen(W_Photo.body, 'set', W_Photo.on_changed_body)
