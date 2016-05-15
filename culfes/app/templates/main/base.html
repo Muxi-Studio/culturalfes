@@ -1,12 +1,24 @@
-<!DOCTYPE>
-<html>
-    <title>
-        {% block title %}{% endblock %}-TEST
-    </title>
-    <head>
-        {% block head %}Base Head{% endblock %}-TEST
-    </head>
-    <body>
-        {% block body %}{% endblock %}-TEST
-    </body>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block title %}{% endblock %}
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+	<div class="content">
+		{% block guide %}
+			<div class="guide">
+				<div class="button_list">
+                    <button class="first first_page" id="first_page" >首页</button><button class="second upload" id="upload" >作品上传</button><button class="third rank" id="rank">票数排行</button>
+				</div>
+			</div>
+		{% endblock %}
+		{% block page_content %}{% endblock %}
+	</div>
+	{% block vote_button %}{% endblock %}
+	{% block flash_message %}{% endblock %}
+</body>
 </html>

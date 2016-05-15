@@ -33,7 +33,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'rar']
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
-    BUPLOAD_FOLDER = "/Users/kasheemlew/Downloads/upload"
+    BUPLOAD_FOLDER = os.environ.get('BUPLOAD_FOLDER')
     REDIS_URL = "redis://:password@localhost:6379/0"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
     PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
@@ -60,7 +60,7 @@ class DevelopmentConfig(Config):
     """development configuration"""
     DEBUG = True
     #SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "data-dev.sqlite")
-    SQLALCHEMY_DATABASE_URI = os.environ.get('MYSQL_URI')
+    SQLALCHEMY_DATABASE_URI =  os.environ.get('MYSQL_URI')
 
 """
 testing configuration

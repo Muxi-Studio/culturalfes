@@ -1,11 +1,46 @@
-<html>
-    <title>RANK</title>
-    <head>rank page</head>
-    {% for movie in movies %}
-    <li>
-        <p>{{ movie.name }}</p>
-        <p>{{ movie.author_name }}</p>
-        <p>{{ movie.liked_count }}</p>
-    </li>
-    {% endfor %}
-</html>
+	{% extends 'main/base.html' %}
+	{% block page_content %}
+	<div class="rank-main">
+	<div class="rank-movie-block">
+		<div class="rank-movie-head">电影</div>
+		<div class="rank-movie-rank">
+			{% for rank_movie in movies %}
+            <div class="rank_content"><a href="{{ url_for('main.get_movie', id=rank_movie.id) }}">{{ rank_movie.bname }}</a><span>{{ rank_movie.liked_count}}</span></div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="rank-text-block">
+		<div class="rank-text-head">网文</div>
+		<div class="rank-text-rank">
+			{% for rank_article in articles %}
+			<div class="rank_content"><a href="{{ url_for('main.get_article', id=rank_article.id) }}">{{ rank_article.bname }}</a><span>{{ rank_article.liked_count}}</span></div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="rank-photo-block">
+		<div class="rank-photo-head">摄影</div>
+		<div class="rank-photo-rank">
+			{% for rank_photo in photos %}
+			<div class="rank_content"><a href="{{ url_for('main.get_photo', id=rank_pohto.id) }}">{{ rank_photo.bname }}</a><span>{{ rank_photo.liked_count}}</span></div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="rank-catoon-block">
+		<div class="rank-catoon-head">动漫</div>
+		<div class="rank-catoon-rank">
+			{% for rank_anime in animes %}
+			<div class="rank_content"><a href="{{ url_for('main.get_anime', id=rank_anime.id) }}">{{ rank_anime.bname }}</a><span>{{ rank_anime.liked_count}}</span></div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="rank-course-block">
+		<div class="rank-course-head">微课程</div>
+		<div class="rank-course-rank">
+			{% for rank_course in courses %}
+			<div class="rank_content"><a href="{{ url_for('main.get_course', id=rank_course.id) }}">{{ rank_course.bname }}</a><span>{{ rank_course.liked_count}}</span></div>
+			{% endfor %}
+		</div>
+	</div>
+	</div>
+	<script src="../../static/js/rank.js"></script>
+	{% endblock %}

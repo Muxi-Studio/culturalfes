@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+	{% block page_content %}
+	<div class="second_box">
+		<div class="second_head">
+			<span class="second_head_title">{{ notice.name }}</span>
+			<span class="second_head_author">{{ notice.timestamp }}</span>
+            <div class="second_content"><p>{{ notice.body }}</p></div>
+		</div>
+	</div>
+	{% endblock %}

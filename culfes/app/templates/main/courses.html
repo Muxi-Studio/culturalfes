@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+	<div class="index_tu">
+		<div class="index_title">
+			<div class="index_tag tag2">微课程</div>
+		</div>
+		<div class="index_tu_box">
+			{% for course in courses %}
+			<div class="index_tu_content">
+				<div class="index_tu_img"><img src=""></div>
+				<div class="index_tu_info_box">
+					<div class="index_tu_info">
+						<a href="">{{ course.bname }}</a>
+						<span>{{ course.timestamp }}</span>
+						<span>{{ course.author_name }}</span>
+					</div>
+					<div class="index_tu_like">
+						<img src="../../static/img/heart.png">
+						<a>{{ course.liked_count }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="index_tu_content index_blank"></div>
+			<div class="index_tu_content index_blank"></div>
+		</div>
+	</div>
+{% endblock %}

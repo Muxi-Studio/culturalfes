@@ -1,0 +1,22 @@
+{%extends 'main/base.html' %}
+{% block page_content %}
+	<div class="index_article">
+	<div class="index_title">
+		<div class="index_tag tag1">网文</div>
+	</div>
+	<div class="index_article_box">
+		{% for article in articles %}
+		<div class="index_article_content">
+			<div class="index_article_line">
+                   <a class="index_article_title" href="{{ url_for('get.article'), id=article.id }}">{{ article.bname }}</a>
+				<div class="index_article_info">
+					<span>{{ article.author_name }} ／文</span>
+					<a class="index_liked_count">{{ article.liked_count }}</a>
+					<a class="index_timestamp">{{ article.timestamp }}</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	</div>
+{% endblock %}

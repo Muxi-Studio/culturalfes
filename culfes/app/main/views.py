@@ -27,15 +27,15 @@ def index():
     animes = Anime.query.all()
     photos = Photo.query.all()
     articles = Article.query.all()
-    return render_template('/main/index.html', movies=movies, courses=courses,
-            animes=animes, photos=photos, articles=articles)
+    return render_template('/main/index.html', movies=movies[:3], courses=courses[:3],
+            animes=animes[:3], photos=photos[:3], articles=articles[:3])
 
 
 @main.route('/upload/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
-        tag = request.form.get('tag')
+        tag = request.form.get('upload-class-choice')
         file_name = request.form.get('file_name')
         author_name = request.form.get('author_name')
         if file and allowed_file(file.filename):
@@ -46,40 +46,50 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Movie(
                         name=filename,
+                        bname=file_name,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER + filename
+                        url=UPLOAD_FOLDER + filename,
+                        timestamp=time.strftime("%a %b %d %H:%M:%S %Y",time.localtime())[:10]
                         )
             elif tag == 'article':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'article')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Article(
                         name=filename,
+                        bname=file_name,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER + filename
+                        url=UPLOAD_FOLDER + filename,
+                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                         )
             elif tag == 'photo':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'photo')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Photo(
                         name=filename,
+                        bname=file_name,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER + filename
+                        url=UPLOAD_FOLDER + filename,
+                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                         )
             elif tag == 'anime':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'anime')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Anime(
                         name=filename,
+                        bname=file_name,
                         url=UPLOAD_FOLDER + filename,
-                        author_name=author_name
+                        author_name=author_name,
+                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                         )
             elif tag == 'course':
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
                 item = Course(
                         name=filename,
+                        bname=file_name,
                         author_name=author_name,
-                        url=UPLOAD_FOLDER + filename
+                        url=UPLOAD_FOLDER + filename,
+                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                         )
         else:
             flash("Bad File!")
@@ -88,7 +98,7 @@ def upload_file():
         db.session.commit()
         flash("文件已上传")
         return redirect(url_for('main.upload_file'))
-    return render_template('/main/upload_file.html')
+    return render_template('/main/upload.html')
 
 
 @main.route('/notices/')
@@ -139,7 +149,7 @@ def rank():
     sorted_articles = sorted(articles, key=lambda article: article.liked_count, reverse=True)
     sorted_photos = sorted(photos, key=lambda photo: photo.liked_count, reverse=True)
     sorted_courses = sorted(courses, key=lambda course: course.liked_count, reverse=True)
-    return render_template('/main/rank.html', movies=sorted_movies, animes=animes, photos=photos, articles=articles, courses=courses)
+    return render_template('/main/rank.html', movies=sorted_movies[:20], animes=animes[:20], photos=photos[:20], articles=articles[:20], courses=courses[:20])
 
 
 @main.route('/movie/<int:id>/', methods=["GET", "POST"])
@@ -225,6 +235,12 @@ def get_photo(id):
             r5.set(ip, ip)
             return redirect(url_for('main.get_photo', id=photo.id))
     return render_template('main/photo.html', photo=photo)
+
+
+@main.route('/notice/<int:id>/')
+def get_notice(id):
+    notice = Notice.query.get_or_404(id)
+    return render_template('main/notice.html', notice=notice)
 
 
 @main.route('/captcha/')

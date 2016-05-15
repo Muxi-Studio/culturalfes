@@ -113,10 +113,11 @@ login_manager.anonymous_user = AnonymousUser
 class Base(object):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
+    bname = db.Column(db.Text)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     url = db.Column(db.Text)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    timestamp = db.Column(db.Text)
     author_name = db.Column(db.String(164))
     liked_count = db.Column(db.Integer, default=0)
 

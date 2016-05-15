@@ -1,0 +1,44 @@
+	{%extends 'main/base.html' %}
+	{% block page_content %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+	<div class="upload-main">
+		<form action="" method="post" enctype="multipart/form-data">
+			<div class="upload-author">
+				<label class="upload_label">作    者</label>
+				<input class="upload-author-form" name="author_name">
+			</div>
+			<div class="upload-title">
+				<label class="upload_label">标    题</label>
+				<input class="upload-title-form" name="file_name">
+			</div>
+			<div class="upload-class">
+				<label class="upload_label">类    别</label>
+				<div class="upload-class-second-spe">
+					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="movie">电影  
+					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="article">网文  
+				</div>
+				<div class="upload-class-second">
+					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="anime">动漫  
+					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="photo">摄影 
+				</div>
+				<div class="upload-class-second">
+					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="course">微课程 
+				</div>
+			</div>
+			<div class="upload-addfile">
+				<label>添加附件</label>
+				<input type="file" name="file" class="upload-file-form">
+			</div>
+			<button type="submit" class="upload-submite">提交</button>
+		</form>
+	</div>
+	<script src="../../static/js/upload.js"></script>
+	{% endblock %}

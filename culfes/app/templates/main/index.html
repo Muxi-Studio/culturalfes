@@ -1,11 +1,138 @@
-{% extends "/main/base.html" %}
-{% block title %}Index title{% endblock %}
-{% block head %}<h1>Index head</h1>{{ super() }}{% endblock %}
-{% block body %}
-    <h2>Movie</h2>
-    {% for movie in movies[::-1] %}
-    <a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.name }}</a>
-    <span>{{ movie.author }}</span>
-    <span>{{ movie.timestamp }}</span>
-    {% endfor %}
-{% endblock %}
+{% extends 'main/base.html' %} 
+{% block page_content %}
+	<div class="index_banner">
+		<div class="index_banner_img"><img src="/static/img/banner.jpg"></div>
+	</div>
+	<div class="index_notice">
+		<div class="index_title">
+			<div class="index_tag tag1">通知</div>
+			<a class="index_more" href="">更多 ></a>
+		</div>
+		<div class="index_notice_box">
+		{% for notice in notices %}
+			<div class="index_notice_content">
+				<div class="index_notice_dot"></div>
+				<a class="index_notice_time">{{ notice.timestamp }}</a>
+                <div class="index_notice_line"><a href="{{ url_for('get_notice', id=notice.id) }}">{{ notice.bname }}</a></div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+	<div class="index_tu">
+		<div class="index_title">
+			<div class="index_tag tag2">电影</div>
+			<a class="index_more" href="">更多 ></a>
+		</div>
+		<div class="index_tu_box">
+			{% for movie in movies %}
+			<div class="index_tu_content">
+				<div class="index_tu_img"><img src=""></div>
+				<div class="index_tu_info_box">
+					<div class="index_tu_info">
+						<a href="">{{ movie.bname }}</a>
+						<span>{{ movie.timestamp }}</span>
+						<span>{{ movie.author_name }}</span>
+					</div>
+					<div class="index_tu_like">
+						<img src="../static/img/heart.png">
+						<a>{{ movie.liked_count }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="index_article">
+		<div class="index_title">
+			<div class="index_tag tag1">网文</div>
+			<a class="index_more" href="">更多 ></a>
+		</div>
+		<div class="index_article_box">
+			{% for article in articles %}
+			<div class="index_article_content">
+				<div class="index_article_line">
+					<a class="index_article_title" href="">{{ article.bname }}</a>
+					<div class="index_article_info">
+						<span>{{ article.author_name }} ／文</span>
+						<a class="index_liked_count">{{ article.liked_count }}</a>
+						<a class="index_timestamp">{{ article.timestamp }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="index_tu">
+		<div class="index_title">
+			<div class="index_tag tag2">摄影</div>
+			<a class="index_more" href="">更多 ></a>
+		</div>
+		<div class="index_tu_box">
+			{% for photo in photos %}
+			<div class="index_tu_content">
+				<div class="index_tu_img"><img src=""></div>
+				<div class="index_tu_info_box">
+					<div class="index_tu_info">
+						<a href="">{{ photo.bname }}</a>
+						<span>{{ photo.timestamp }}</span>
+						<span>{{ photo.author_name }}</span>
+					</div>
+					<div class="index_tu_like">
+						<img src="../../static/img/heart.png">
+						<a>{{ photo.liked_count }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="index_tu">
+		<div class="index_title">
+			<div class="index_tag tag1">动漫</div>
+			<a class="index_more" href="">更多 ></a>
+		</div>
+		<div class="index_tu_box">
+			{% for anime in animes %}
+			<div class="index_tu_content">
+				<div class="index_tu_img"><img src=""></div>
+				<div class="index_tu_info_box">
+					<div class="index_tu_info">
+						<a href="">{{ anime.bname }}</a>
+						<span>{{ anime.timestamp }}</span>
+						<span>{{ anime.author_name }}</span>
+					</div>
+					<div class="index_tu_like">
+						<img src="../../static/img/heart.png">
+						<a>{{ anime.liked_count }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="index_tu">
+		<div class="index_title">
+			<div class="index_tag tag2">微课程</div>
+			<a class="index_more" href="">更多 ></a>
+		</div>
+		<div class="index_tu_box">
+			{% for course in courses %}
+			<div class="index_tu_content">
+				<div class="index_tu_img"><img src=""></div>
+				<div class="index_tu_info_box">
+					<div class="index_tu_info">
+						<a href="">{{ course.bname }}</a>
+						<span>{{ course.timestamp }}</span>
+						<span>{{ course.author_name }}</span>
+					</div>
+					<div class="index_tu_like">
+						<img src="../../static/img/heart.png">
+						<a>{{ course.liked_count }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<script src="../../static/js/index.js"></script>
+ {% endblock %}
