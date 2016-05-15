@@ -11,6 +11,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 ENV/
+venv/
 build/
 develop-eggs/
 dist/
@@ -22,6 +23,8 @@ lib64/
 parts/
 sdist/
 var/
+gt-python-sdk/
+duoshuo-python-sdk/
 migrations/
 *.egg-info/
 .installed.cfg
