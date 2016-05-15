@@ -2,9 +2,10 @@
 
 sudo git clone https://github.com/duoshuo/duoshuo-python-sdk.git
 cd duoshuo-python-sdk
-python setup.py install
+sudo python setup.py install
 cd ..
 
+sudo git clone https://github.com/GeeTeam/gt-python-sdk.git
 cd gt-python-sdk
 sudo python setup.py install
 cd ..
