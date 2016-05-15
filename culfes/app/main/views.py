@@ -1,7 +1,7 @@
 # coding: utf-8
 from .. import app
 from . import main
-from ..models import Movie, Article, Photo, Anime, Course
+from ..models import Movie, Article, Photo, Anime, Course, W_Movie, W_Article, W_Photo, W_Anime, W_Course, Notice
 from app import db, r1, r2, r3, r4, r5
 from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
 from geetest import GeetestLib

@@ -60,6 +60,11 @@ def make_shell_context():
         Photo = Photo,
         Anime = Anime,
         Course = Course,
+        W_Movie = W_Movie,
+        W_Article = W_Article,
+        W_Photo = W_Photo,
+        W_Anime = W_Anime,
+        W_Course = W_Course,
         Notice = Notice
     )
 
