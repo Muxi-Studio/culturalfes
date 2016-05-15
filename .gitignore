@@ -26,6 +26,8 @@ var/
 gt-python-sdk/
 duoshuo-python-sdk/
 migrations/
+gt-python-sdk/
+duoshuo-python-sdk/
 *.egg-info/
 .installed.cfg
 *.egg
