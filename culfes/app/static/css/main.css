@@ -375,11 +375,11 @@ button {
 
 .submite_flash {
   position: fixed;
-  width: 160px;
+  width: 240px;
   bottom: 3px;
   left: 50%;
   text-align: center;
-  margin-left: -80px;
+  margin-left: -120px;
   list-style: none;
   font-size: 20px;
   z-index: 350; }
@@ -442,11 +442,11 @@ label {
 
 .flashes {
   position: absolute;
-  width: 160px;
+  width: 200px;
   bottom: 150px;
   left: 50%;
   text-align: center;
-  margin-left: -80px;
+  margin-left: -100px;
   list-style: none; }
 
 .uploadfile {

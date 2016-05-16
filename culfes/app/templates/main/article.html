@@ -61,13 +61,13 @@
 				<div class="c_confirm"><button id="c_confirm_btn">确认</button></div>
 			</form>
 		</div>
-		<div class="c_confirm"><button id="c_confirm_btn">确认</button></div>
 	</div>
 	{% endblock %}
 {% block vote_button %}
 <div class="second_vote">
 	<button class="second_vote_bt">投票</button>
 </div>
+<script src="../../../static/js/second.js"></script>
 {% endblock %}
 {% block flash_message %}
 	{% with messages = get_flashed_messages() %}
