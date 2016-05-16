@@ -1,5 +1,5 @@
 {%extends 'main/base.html' %}
-{% block title %}{{ course.bname %}-{{ course.bname }}{% endblock %}
+{% block title %}{{ course.bname }}-{{ course.bname }}{% endblock %}
 	{% block page_content %}
 	<div class="second_box">
 		<div class="second_head">
@@ -65,9 +65,10 @@
 	</div>
 	{% endblock %}
 	{% block vote_button %}
-		<div class="second_vote">
-		<button class="second_vote_bt">投票</button>
+	<div class="second_vote">
+		<button class="second_vote_bt" id="vote_btn">投票</button>
 	</div>
+	<script src="../../../static/js/second.js"></script>
 	{% endblock %}
 	{% block flash_message %}
 		{% with messages = get_flashed_messages() %}
