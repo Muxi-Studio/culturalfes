@@ -361,8 +361,10 @@ button {
   margin: -80px auto; }
 
 #c_confirm_btn {
-  display: block;
-  margin: auto;
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  margin-left: -40px;
   width: 80px;
   height: 40px;
   font-size: 20px;
