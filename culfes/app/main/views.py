@@ -162,85 +162,105 @@ def rank():
 @main.route('/movie/<int:id>/', methods=["GET", "POST"])
 def get_movie(id):
     movie = Movie.query.get_or_404(id)
-    if request.method == 'POST':
-        ip = request.remote_addr
-        if r1.get(ip):
-            flash("每天只能投一次票!")
-        else:
-            movie.liked_count += 1
-            db.session.add(movie)
-            db.session.commit()
-            flash("投票成功")
-            r1.set(ip, ip)
+    if 'vote' in session.keys():
+        if session['vote'] == 1:
+            ip = request.remote_addr
+            if r1.get(ip):
+                flash("每天只能投一次票!")
+            else:
+                movie.liked_count += 1
+                db.session.add(movie)
+                db.session.commit()
+                flash("投票成功")
+                r1.set(ip, ip)
+            session['vote'] = 0
             return redirect(url_for('main.get_movie', id=movie.id))
+    else:
+        session['vote'] = 0
     return render_template('main/movie.html', movie=movie)
 
 
 @main.route('/article/<int:id>/', methods=["GET", "POST"])
 def get_article(id):
     article = Article.query.get_or_404(id)
-    if request.method == 'POST':
-        ip = request.remote_addr
-        if r2.get(ip):
-            flash("每天只能投一次票!")
-        else:
-            article.liked_count += 1
-            db.session.add(article)
-            db.session.commit()
-            flash("投票成功")
-            r2.set(ip, ip)
+    if 'vote' in session.keys():
+        if session['vote'] == 1:
+            ip = request.remote_addr
+            if r2.get(ip):
+                flash("每天只能投一次票!")
+            else:
+                article.liked_count += 1
+                db.session.add(article)
+                db.session.commit()
+                flash("投票成功")
+                r2.set(ip, ip)
+            session['vote'] = 0
             return redirect(url_for('main.get_article', id=article.id))
+    else:
+        session['vote'] = 0
     return render_template('main/article.html', article=article)
 
 
 @main.route('/anime/<int:id>/', methods=["GET", "POST"])
 def get_anime(id):
     anime = Anime.query.get_or_404(id)
-    if request.method == 'POST':
-        ip = request.remote_addr
-        if r3.get(ip):
-            flash("每天只能投一次票!")
-        else:
-            anime.liked_count += 1
-            db.session.add(anime)
-            db.session.commit()
-            flash("投票成功")
-            r3.set(ip, ip)
+    if 'vote' in session.keys():
+        if session['vote'] == 1:
+            ip = request.remote_addr
+            if r3.get(ip):
+                flash("每天只能投一次票!")
+            else:
+                anime.liked_count += 1
+                db.session.add(anime)
+                db.session.commit()
+                flash("投票成功")
+                r3.set(ip, ip)
+            session['vote'] = 0
             return redirect(url_for('main.get_anime', id=anime.id))
+    else:
+        session['vote'] = 0
     return render_template('main/anime.html', anime=anime)
 
 
 @main.route('/course/<int:id>/', methods=["GET", "POST"])
 def get_course(id):
     course = Course.query.get_or_404(id)
-    if request.method == 'POST':
-        ip = request.remote_addr
-        if r4.get(ip):
-            flash("每天只能投一次票!")
-        else:
-            course.liked_count += 1
-            db.session.add(course)
-            db.session.commit()
-            flash("投票成功")
-            r4.set(ip, ip)
+    if 'vote' in session.keys():
+        if session['vote'] == 1:
+            ip = request.remote_addr
+            if r4.get(ip):
+                flash("每天只能投一次票!")
+            else:
+                course.liked_count += 1
+                db.session.add(course)
+                db.session.commit()
+                flash("投票成功")
+                r4.set(ip, ip)
+            session['vote'] = 0
             return redirect(url_for('main.get_course', id=course.id))
+    else:
+        session['vote'] = 0
     return render_template('main/course.html', course=course)
 
 
 @main.route('/photo/<int:id>/', methods=["GET", "POST"])
 def get_photo(id):
     photo = Photo.query.get_or_404(id)
-    if request.method == 'POST':
-        ip = request.remote_addr
-        if r5.get(ip):
-            flash("每天只能投一次票!")
-        else:
-            photo.liked_count += 1
-            db.session.add(photo)
-            db.session.commit()
-            flash("投票成功")
-            r5.set(ip, ip)
+    if 'vote' in session.keys():
+        if session['vote'] == 1:
+            ip = request.remote_addr
+            if r5.get(ip):
+                flash("每天只能投一次票!")
+            else:
+                photo.liked_count += 1
+                db.session.add(photo)
+                db.session.commit()
+                flash("投票成功")
+                r5.set(ip, ip)
+            session['vote'] = 0
             return redirect(url_for('main.get_photo', id=photo.id))
+    else:
+        session['vote'] = 0
     return render_template('main/photo.html', photo=photo)
 
 
@@ -268,19 +288,22 @@ def get_captcha():
 
 @main.route('/validate', methods=["POST"])
 def validate_capthca():
+    session['vote'] = 0
     gt = GeetestLib(captcha_id, private_key)
     challenge = request.form[gt.FN_CHALLENGE]
     validate = request.form[gt.FN_VALIDATE]
     seccode = request.form[gt.FN_SECCODE]
     status = session[gt.GT_STATUS_SESSION_KEY]
     user_id = session["user_id"]
+    session['refer'] = request.referrer
     if status:
         result = gt.success_validate(challenge, validate, seccode, user_id)
     else:
         result = gt.failback_validate(challenge, validate, seccode)
     result = "success" if result else "fail"
     if result == "success":
-        return redirect(url_for("main.index"))
+        session['vote'] = 1
+        return redirect(session['refer'])
     else:
         flash("验证码错误!")
-        return redirect(url_for("main.captcha"))
+        return redirect(session['refer'])
