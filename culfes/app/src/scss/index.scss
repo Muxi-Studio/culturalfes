@@ -161,10 +161,13 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 			margin-right:auto;
 		}
 			.index_tu_img{
-				background-color: black;
 				display: block;
 				width: $index_content_wid;
 				height: $index_content_hei;
+				img{
+					width: $index_content_wid;
+					height: $index_content_hei;
+				}
 			}
 			.index_tu_info_box{
 				width: 100%;

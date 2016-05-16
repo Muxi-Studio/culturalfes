@@ -11,7 +11,7 @@
 				<div class="index_tu_img"><img src=""></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="">{{ anime.bname }}</a>
+						<a href="{{ url_for('main.get_anime', id=anime.id) }}">{{ anime.bname }}</a>
 						<span>{{ anime.timestamp }}</span>
 						<span>{{ anime.author_name }}</span>
 					</div>

@@ -13,7 +13,7 @@ body {
   width: 100%;
   height: auto;
   margin: auto;
-  margin-bottom: 45px; }
+  margin-bottom: 40px; }
 
 .guide {
   width: 100%;
@@ -174,10 +174,12 @@ button {
         margin-left: auto;
         margin-right: auto; } }
     .index_tu .index_tu_box .index_tu_content .index_tu_img {
-      background-color: black;
       display: block;
       width: 260px;
       height: 177px; }
+      .index_tu .index_tu_box .index_tu_content .index_tu_img img {
+        width: 260px;
+        height: 177px; }
     .index_tu .index_tu_box .index_tu_content .index_tu_info_box {
       width: 100%;
       display: block;
@@ -278,7 +280,7 @@ button {
     font-size: 16.67px;
     color: #626262; }
   .rank-movie-rank span, .rank-text-rank span, .rank-photo-rank span, .rank-catoon-rank span, .rank-course-rank span {
-    margin-left: 80px;
+    margin-left: 120px;
     font-size: 12.92px;
     color: #c9c9c9;
     line-height: 12.92px;

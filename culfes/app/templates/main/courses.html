@@ -11,7 +11,7 @@
 				<div class="index_tu_img"><img src=""></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="">{{ course.bname }}</a>
+						<a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.bname }}</a>
 						<span>{{ course.timestamp }}</span>
 						<span>{{ course.author_name }}</span>
 					</div>

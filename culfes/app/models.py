@@ -191,7 +191,10 @@ class Photo(db.Model, Base):
 db.event.listen(Photo.body, 'set', Photo.on_changed_body)
 
 
-class Notice(object):
+class Notice(db.Model):
+    """notices"""
+    __tablename__ = 'notice'
+    tag = 'notice'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
