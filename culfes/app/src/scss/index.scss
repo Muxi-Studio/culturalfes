@@ -82,6 +82,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	font-size: nth($font-size,4);
 	}
 }
+.index_morecontent{
+	border-bottom: none;
+}
 .index_notice{
 	.index_notice_box{
 		display: block;

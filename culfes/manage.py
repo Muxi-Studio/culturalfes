@@ -38,7 +38,7 @@ from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
 from app import app
 from app import db
-from app.models import User, Role, Movie, Article, Photo, Anime, Course, Notice
+from app.models import User, Role, Movie, Article, Photo, Anime, Course, W_Movie, W_Article, W_Photo, W_Anime, W_Course, Notice
 
 # 编码设置
 reload(sys)

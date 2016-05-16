@@ -1,8 +1,6 @@
 $d_green:#207479;
 $s_green:#33c157;
 $content_width:100%;
-$big-fonts:20.83px;
-$big-fontc:white;
 $font-size:22.92px 20.83px 18.75px 16.67px 12.92px;
 $font-color:#f5f5f5 #c9c9c9 #626262;
 $font-family: "Microsoft YaHei",微软雅黑;
@@ -14,6 +12,7 @@ body{
 	width: $content_width;
 	height: auto;
 	margin: auto;
+	margin-bottom: 45px;
 }
 .guide{
 	width:100%;

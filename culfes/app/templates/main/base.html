@@ -12,12 +12,13 @@
 		{% block guide %}
 			<div class="guide">
 				<div class="button_list">
-                    <button class="first first_page" id="first_page" >首页</button><button class="second upload" id="upload" >作品上传</button><button class="third rank" id="rank">票数排行</button>
+                    <button class="first first_page" id="first_page" onclick="location.href='/main/'">首页</button><button class="second upload" id="upload" onclick="location.href='/main/upload'">作品上传</button><button class="third rank" id="rank" onclick="location.href='/main/rank'">票数排行</button>
 				</div>
 			</div>
 		{% endblock %}
 		{% block page_content %}{% endblock %}
 	</div>
+	{% block captcha %}{% endblock %}
 	{% block vote_button %}{% endblock %}
 	{% block flash_message %}{% endblock %}
 </body>
