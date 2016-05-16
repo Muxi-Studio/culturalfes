@@ -149,7 +149,14 @@ def rank():
     sorted_articles = sorted(articles, key=lambda article: article.liked_count, reverse=True)
     sorted_photos = sorted(photos, key=lambda photo: photo.liked_count, reverse=True)
     sorted_courses = sorted(courses, key=lambda course: course.liked_count, reverse=True)
-    return render_template('/main/rank.html', movies=sorted_movies[:20], animes=animes[:20], photos=photos[:20], articles=articles[:20], courses=courses[:20])
+    return render_template(
+            'main/rank.html',
+            movies=sorted_movies[:20],
+            animes=sorted_animes[:20],
+            photos=sorted_photos[:20],
+            articles=sorted_articles[:20],
+            courses=sorted_courses[:20]
+            )
 
 
 @main.route('/movie/<int:id>/', methods=["GET", "POST"])

@@ -21,7 +21,7 @@
 		<div class="rank-photo-head">摄影</div>
 		<div class="rank-photo-rank">
 			{% for rank_photo in photos %}
-			<div class="rank_content"><a href="{{ url_for('main.get_photo', id=rank_pohto.id) }}">{{ rank_photo.bname }}</a><span>{{ rank_photo.liked_count}}</span></div>
+			<div class="rank_content"><a href="{{ url_for('main.get_photo', id=rank_photo.id) }}">{{ rank_photo.bname }}</a><span>{{ rank_photo.liked_count}}</span></div>
 			{% endfor %}
 		</div>
 	</div>
