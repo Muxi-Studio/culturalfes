@@ -12,7 +12,8 @@ body {
 .content {
   width: 100%;
   height: auto;
-  margin: auto; }
+  margin: auto;
+  margin-bottom: 45px; }
 
 .guide {
   width: 100%;
@@ -102,6 +103,9 @@ button {
     color: #c9c9c9;
     line-height: 47px;
     font-size: 16.67px; }
+
+.index_morecontent {
+  border-bottom: none; }
 
 .index_notice .index_notice_box {
   display: block;
@@ -321,23 +325,60 @@ button {
 .second_vote {
   position: fixed;
   height: 83px;
-  width: 80%;
+  width: 100%;
   bottom: 0;
-  margin: 0 10%;
   border-top: 1px solid #c9c9c9;
-  background-color: #f5f5f5; }
+  background-color: #f5f5f5;
+  z-index: 300; }
   .second_vote button {
     height: 40px;
-    width: 15%;
+    width: 200px;
     position: absolute;
     left: 50%;
     top: 10px;
-    margin-left: -50px;
+    margin-left: -100px;
     background-color: #33c157;
     color: #ffffff;
     font-size: 25px;
     font-family: "Microsoft YaHei";
     color: #f5f5f5; }
+
+.c_container {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  z-index: 500;
+  background: rgba(41, 47, 51, 0.7); }
+
+.c_content {
+  width: 100%;
+  margin: 200px auto; }
+
+.c_box {
+  width: 300px;
+  margin: -80px auto; }
+
+#c_confirm_btn {
+  display: block;
+  margin: auto;
+  width: 80px;
+  height: 40px;
+  font-size: 20px;
+  color: #c9c9c9;
+  background-color: #33c157; }
+
+.submite_flash {
+  position: fixed;
+  width: 160px;
+  bottom: 3px;
+  left: 50%;
+  text-align: center;
+  margin-left: -80px;
+  list-style: none;
+  font-size: 20px;
+  z-index: 350; }
 
 .upload-main {
   width: 70%;
@@ -379,10 +420,10 @@ label {
   margin-left: 35px; }
 
 .upload-file-form {
-  width: 768px;
+  width: 700px;
   height: 35px;
   background-color: #ffffff;
-  margin-left: 35px; }
+  margin-left: 45px; }
 
 .upload-submite {
   display: block;
@@ -395,16 +436,16 @@ label {
   margin-left: -95px;
   color: #ffffff; }
 
-  .c_container{
-    width: 960px;
-    margin: 0 auto;
-  }
-  .c_content{
-    width: 960px;
-    margin: 10 auto;
-    border-top: 1px solid #ccc;
-  }
-  .c_box{
-    width:300px;
-    margin: 30px auto;
-  }
+.flashes {
+  position: absolute;
+  width: 160px;
+  bottom: 150px;
+  left: 50%;
+  text-align: center;
+  margin-left: -80px;
+  list-style: none; }
+
+.uploadfile {
+  width: 70px;
+  height: 40px;
+  vertical-align: middle; }

@@ -1,82 +1,81 @@
 {% extends 'main/base.html' %}
-{% block page_content %}
-<div class="second_box">
-	<div class="second_head">
-		<span class="second_head_title">{{ anime.bname }}</span>
-		<span class="second_head_author">{{ anime.timestamp }}/{{ anime.author_name }}</span>
+	{% block page_content %}
+	<div class="second_box">
+		<div class="second_head">
+			<span class="second_head_title">{{ anime.bname }}</span>
+			<span class="second_head_author">{{ anime.timestamp }}/{{ anime.author_name }}</span>
+		</div>
+		<div class="second_content"><video src="" controls="control"></video></div>
 	</div>
-	<div class="second_content"><video src="" controls="control"></video></div>
-</div>
-<!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="{{ anime.id }}" data-title="{{ anime.bname }}" data-url="{{ url_for('main.get_anime', id=anime.id) }}"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"wenhuajie"};
-        (function() {
-                var ds = document.createElement('script');
-                        ds.type = 'text/javascript';ds.async = true;
-                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                                        ds.charset = 'UTF-8';
-                                                (document.getElementsByTagName('head')[0] 
-                                                         || document.getElementsByTagName('body')[0]).appendChild(ds);
-                                                            })();
-                                                                </script>
-                                                                <!-- 多说公共JS代码
-                                                                end -->
-                                                                复制
-
-<div class="c_container">
-<div class="c_content">
-	<form method="post" action="/validate">
-	<div class="c_box">
-		<div id="captcha"></div>
-
-		<div class="c_box">
-			<button id="submit-button">提交</button>
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="{{ anime.id }}" data-title="{{ anime.bname }}" data-url="{{ url_for('main.get_anime', id=anime.id) }}"></div>
+	    <!-- 多说评论框 end -->
+	    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	    <script type="text/javascript">
+	    var duoshuoQuery = {short_name:"wenhuajie"};
+	        (function() {
+	            var ds = document.createElement('script');
+	                ds.type = 'text/javascript';ds.async = true;
+	                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	                ds.charset = 'UTF-8';
+	                (document.getElementsByTagName('head')[0] 
+	                || document.getElementsByTagName('body')[0]).appendChild(ds);
+	        })();
+	    </script>
+	    <!-- 多说公共JS代码 end -->
+	{% endblock %}
+	{% block captcha %}
+	<div class="c_container" id="captcha_container">
+		<div class="c_content">
+			<form method="post" action="/validate">
+				<div class="c_box">
+				<div id="captcha"></div>
+				<div class="c_box">
+					<button id="submit-button">提交</button>
+				</div>
+				<script src="http://static.geetest.com/static/tools/gt.js"></script>
+				<script>
+				    var handler = function (captchaObj) {
+				         // 将验证码加到id为captcha的元素里
+				         captchaObj.appendTo("#captcha");
+				     };
+				    $.ajax({
+				        // 获取id，challenge，success（是否启用failback）
+				        url: "/main/getcaptcha",
+				        type: "get",
+				        dataType: "json", // 使用jsonp格式
+				        success: function (data) {
+				            // 使用initGeetest接口
+				            // 参数1：配置参数，与创建Geetest实例时接受的参数一致
+				            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+				            initGeetest({
+				                gt: data.gt,
+				                challenge: data.challenge,
+				                product: "embed", // 产品形式
+				                offline: !data.success
+				            }, handler);
+				        }
+				    });
+				</script>
+				</div>
+			</form>
 		</div>
-		<script src="http://static.geetest.com/static/tools/gt.js"></script>
-		<script>
-				var handler = function (captchaObj) {
-						 // 将验证码加到id为captcha的元素里
-						 captchaObj.appendTo("#captcha");
-				 };
-				$.ajax({
-						// 获取id，challenge，success（是否启用failback）
-						url: "/main/getcaptcha",
-						type: "get",
-						dataType: "json", // 使用jsonp格式
-						success: function (data) {
-								// 使用initGeetest接口
-								// 参数1：配置参数，与创建Geetest实例时接受的参数一致
-								// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
-								initGeetest({
-										gt: data.gt,
-										challenge: data.challenge,
-										product: "embed", // 产品形式
-										offline: !data.success
-								}, handler);
-						}
-				});
-		</script>
-		</div>
-	</form>
-</div>
-</div>
-{% endblock %}
-{% block vote_button %}
-	<div class="second_vote">
-	<button class="second_vote_bt">投票</button>
-</div>
-{% endblock %}
-{% block flash_message %}
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul class="submite_flash">
-		{% for message in messages %}
-		<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-   	{% endif %}
-{% endwith %}
-{% endblock %}
+		<div class="c_confirm"><button id="c_confirm_btn">确认</button></div>
+	</div>
+	{% endblock %}
+	{% block vote_button %}
+		<div class="second_vote">
+		<button class="second_vote_bt">投票</button>
+	</div>
+	{% endblock %}
+	{% block flash_message %}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul class="submite_flash">
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	   	{% endif %}
+	{% endwith %}
+	{% endblock %}

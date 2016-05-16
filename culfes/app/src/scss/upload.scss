@@ -41,10 +41,10 @@ label{
 	margin-left: 35px;
 }
 .upload-file-form{
-	width: 768px;
+	width: 700px;
 	height: $upload-height;
 	background-color: $upload-form-bgc;
-	margin-left: 35px;
+	margin-left: 45px;
 }
 .upload-submite{
 	display: block;
@@ -56,4 +56,18 @@ label{
 	left:50%;
 	margin-left: -95px;
 	color:#ffffff;
+}
+.flashes{
+	position: absolute;
+	width: 160px;
+	bottom: 150px;
+	left: 50%;
+	text-align: center;
+	margin-left: -80px;
+	list-style: none;
+}
+.uploadfile{
+	width: 70px;
+	height: 40px;
+	vertical-align: middle;
 }
