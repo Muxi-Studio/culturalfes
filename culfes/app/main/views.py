@@ -35,8 +35,11 @@ def index():
 def upload_file():
     if request.method == 'POST':
         tag = request.form.get('upload-class-choice')
-        file_name = request.form.get('file_name')
-        author_name = request.form.get('author_name')
+        if not tag:
+            flash("请选择类型!")
+            return redirect(url_for('main.upload_file'))
+        file_name = request.form.get('file_name') or '无'
+        author_name = request.form.get('author_name') or '无'
         upload_url = request.form.get('upload_url')
 
         if not upload_url:
