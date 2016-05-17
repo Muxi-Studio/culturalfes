@@ -34,69 +34,98 @@ def index():
 @main.route('/upload/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        file = request.files['file']
         tag = request.form.get('upload-class-choice')
         file_name = request.form.get('file_name')
         author_name = request.form.get('author_name')
-        if file and allowed_file(file.filename):
-            filename = time.strftime("%a %b %d %H:%M:%S %Y",
-                    time.localtime()) + ' ' + file_name + '.' + file.filename.rsplit('.', 1)[1]
-            if tag == 'movie':
-                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie')
+        upload_url = request.form.get('upload_url')
+
+        if not upload_url:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                filename = time.strftime("%a %b %d %H:%M:%S %Y",
+                        time.localtime()) + ' ' + file_name + '.' + file.filename.rsplit('.', 1)[1]
+            else:
+                flash("请上传文件压缩包!")
+                return redirect(url_for('main.upload_file'))
+        else:
+            filename = time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()) + ' ' + file_name
+
+        if tag == 'movie':
+            UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie')
+            if not upload_url:
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = W_Movie(
-                        name=filename,
-                        bname=file_name,
-                        author_name=author_name,
-                        url=UPLOAD_FOLDER + filename,
-                        timestamp=time.strftime("%a %b %d %H:%M:%S %Y",time.localtime())[:10]
-                        )
-            elif tag == 'article':
+            else:
+                UPLOAD_FOLDER = 'no'
+            item = W_Movie(
+                    name=filename,
+                    bname=file_name,
+                    author_name=author_name,
+                    url=UPLOAD_FOLDER + filename,
+                    upload_url=upload_url,
+                    timestamp=time.strftime("%a %b %d %H:%M:%S %Y",time.localtime())[:10]
+                    )
+
+        elif tag == 'article':
+            if not upload_url:
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'article')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = W_Article(
-                        name=filename,
-                        bname=file_name,
-                        author_name=author_name,
-                        url=UPLOAD_FOLDER + filename,
-                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
-                        )
-            elif tag == 'photo':
+            else:
+                UPLOAD_FOLDER = 'no'
+            item = W_Article(
+                    name=filename,
+                    bname=file_name,
+                    author_name=author_name,
+                    url=UPLOAD_FOLDER + filename,
+                    upload_url=upload_url,
+                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    )
+
+        elif tag == 'photo':
+            if not upload_url:
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'photo')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = W_Photo(
-                        name=filename,
-                        bname=file_name,
-                        author_name=author_name,
-                        url=UPLOAD_FOLDER + filename,
-                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
-                        )
-            elif tag == 'anime':
+            else:
+                UPLOAD_FOLDER = 'no'
+            item = W_Photo(
+                    name=filename,
+                    bname=file_name,
+                    author_name=author_name,
+                    url=UPLOAD_FOLDER + filename,
+                    upload_url=upload_url,
+                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    )
+        elif tag == 'anime':
+            if not upload_url:
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'anime')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = W_Anime(
-                        name=filename,
-                        bname=file_name,
-                        url=UPLOAD_FOLDER + filename,
-                        author_name=author_name,
-                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
-                        )
-            elif tag == 'course':
+            else:
+                UPLOAD_FOLDER = 'no'
+            item = W_Anime(
+                    name=filename,
+                    bname=file_name,
+                    url=UPLOAD_FOLDER + filename,
+                    author_name=author_name,
+                    upload_url=upload_url,
+                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    )
+        elif tag == 'course':
+            if not upload_url:
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
-                item = W_Course(
-                        name=filename,
-                        bname=file_name,
-                        author_name=author_name,
-                        url=UPLOAD_FOLDER + filename,
-                        timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
-                        )
-        else:
-            flash("Bad File!")
-            return redirect(url_for('main.upload_file'))
+            else:
+                UPLOAD_FOLDER = 'no'
+            item = W_Course(
+                    name=filename,
+                    bname=file_name,
+                    author_name=author_name,
+                    url=UPLOAD_FOLDER + filename,
+                    upload_url=upload_url,
+                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    )
+
         db.session.add(item)
         db.session.commit()
-        flash("文件已上传")
+        flash("文件已上传!正在审核中···")
         return redirect(url_for('main.upload_file'))
     return render_template('/main/upload.html')
 

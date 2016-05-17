@@ -117,6 +117,7 @@ class Base(object):
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     url = db.Column(db.Text)
+    upload_url = db.Column(db.Text)
     timestamp = db.Column(db.Text)
     author_name = db.Column(db.String(164))
     liked_count = db.Column(db.Integer, default=0)

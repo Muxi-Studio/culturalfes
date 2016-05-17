@@ -42,3 +42,35 @@ admin.add_view(ModelView(User, db.session))
 from app.models import Role
 admin.add_view(ModelView(Role, db.session))
 
+from app.models import Movie
+admin.add_view(ModelView(Movie, db.session))
+
+from app.models import Anime
+admin.add_view(ModelView(Anime, db.session))
+
+from app.models import Course
+admin.add_view(ModelView(Course, db.session))
+
+from app.models import Photo
+admin.add_view(ModelView(Photo, db.session))
+
+from app.models import Article
+admin.add_view(ModelView(Article, db.session))
+
+from app.models import W_Movie
+admin.add_view(ModelView(W_Movie, db.session))
+
+from app.models import W_Anime
+admin.add_view(ModelView(W_Anime, db.session))
+
+from app.models import W_Course
+admin.add_view(ModelView(W_Course, db.session))
+
+from app.models import W_Photo
+admin.add_view(ModelView(W_Photo, db.session))
+
+from app.models import W_Article
+admin.add_view(ModelView(W_Article, db.session))
+
+from app.models import Notice
+admin.add_view(ModelView(Notice, db.session))
