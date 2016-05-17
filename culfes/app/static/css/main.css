@@ -54,7 +54,7 @@ button {
     display: block;
     width: 100%;
     height: 425px;
-    background: url("/static/img/banner.jpg") no-repeat;
+    background: url("/static/img/banner1.jpg") no-repeat;
     background-size: 100%; }
     .index_banner .index_banner_img {
       display: none; } }
@@ -176,10 +176,11 @@ button {
     .index_tu .index_tu_box .index_tu_content .index_tu_img {
       display: block;
       width: 260px;
-      height: 177px; }
+      height: 177px;
+      overflow: hidden; }
       .index_tu .index_tu_box .index_tu_content .index_tu_img img {
-        width: 260px;
-        height: 177px; }
+        width: 100%;
+        min-height: 177px; }
     .index_tu .index_tu_box .index_tu_content .index_tu_info_box {
       width: 100%;
       display: block;
@@ -427,7 +428,7 @@ label {
   width: 700px;
   height: 35px;
   background-color: #ffffff;
-  margin-left: 45px; }
+  margin-left: 40px; }
 
 .upload-submite {
   display: block;
@@ -443,13 +444,20 @@ label {
 .flashes {
   position: absolute;
   width: 200px;
-  bottom: 150px;
+  bottom: 10px;
   left: 50%;
   text-align: center;
   margin-left: -100px;
   list-style: none; }
 
 .uploadfile {
-  width: 70px;
+  margin-left: -75px;
+  width: 150px;
   height: 40px;
   vertical-align: middle; }
+
+.upload-addurl {
+  display: block;
+  margin-left: 150px;
+  margin-bottom: 30px;
+  letter-spacing: 10px; }

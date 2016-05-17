@@ -6,7 +6,7 @@
 			<span class="second_head_title">{{ photo.bname }}</span>
 			<span class="second_head_author">{{ photo.timestamp }}/{{ photo.author_name }}</span>
 		</div>
-		<div class="second_content"><img src="/static/img/snoopy.jpeg"></div>
+		<div class="second_content"><img src="{{ photo.url }}"></div>
 	</div>
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="{{ photo.id }}" data-title="{{ photo.bname }}" data-url="{{ url_for('main.get_photo', id=photo.id) }}"></div>
