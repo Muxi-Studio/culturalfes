@@ -38,8 +38,8 @@ def upload_file():
         if not tag:
             flash("请选择类型!")
             return redirect(url_for('main.upload_file'))
-        file_name = request.form.get('file_name') or '无'
-        author_name = request.form.get('author_name') or '无'
+        file_name = request.form.get('file_name') or 'None'
+        author_name = request.form.get('author_name') or 'None'
         upload_url = request.form.get('upload_url')
 
         if not upload_url:
