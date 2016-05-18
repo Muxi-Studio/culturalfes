@@ -35,11 +35,12 @@ def index():
 def upload_file():
     if request.method == 'POST':
         tag = request.form.get('upload-class-choice')
+        file_name = request.form.get('file_name')
+
         if not tag:
             flash("请选择类型!")
             return redirect(url_for('main.upload_file'))
 
-        file_name = request.form.get('file_name')
         if not file_name:
             flash("请填写文件名!")
             return redirect(url_for('main.upload_file'))
