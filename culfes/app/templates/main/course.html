@@ -6,7 +6,7 @@
 			<span class="second_head_title">{{ course.bname }}</span>
 			<span class="second_head_author">{{ course.timestamp }}/{{ course.author_name }}</span>
 		</div>
-        <div class="second_content"><video src="{{ course.url }}" controls="control"></video></div>
+        <div class="second_content"><video src="{{ course.upload_url }}" controls="control"></video></div>
 	</div>
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="{{ course.id }}" data-title="{{ course.bname }}" data-url="{{ url_for('main.get_course', id=course.id) }}"></div>

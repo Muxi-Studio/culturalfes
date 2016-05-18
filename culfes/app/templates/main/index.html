@@ -19,6 +19,26 @@
 		{% endfor %}
 		</div>
 	</div>
+	<div class="index_article">
+		<div class="index_title">
+			<div class="index_tag tag1">网文</div>
+			<a class="index_more" href="{{ url_for('main.articles') }}">更多 ></a>
+		</div>
+		<div class="index_article_box">
+			{% for article in articles %}
+			<div class="index_article_content">
+				<div class="index_article_line">
+					<a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.bname }}</a>
+					<div class="index_article_info">
+						<span>{{ article.author_name }} ／文</span>
+						<a class="index_liked_count">{{ article.liked_count }}</a>
+						<a class="index_timestamp">{{ article.timestamp }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 	<div class="index_tu">
 		<div class="index_title">
 			<div class="index_tag tag2">电影</div>
@@ -37,26 +57,6 @@
 					<div class="index_tu_like">
 						<img src="../static/img/heart.png">
 						<a>{{ movie.liked_count }}</a>
-					</div>
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
-	<div class="index_article">
-		<div class="index_title">
-			<div class="index_tag tag1">网文</div>
-			<a class="index_more" href="{{ url_for('main.articles') }}">更多 ></a>
-		</div>
-		<div class="index_article_box">
-			{% for article in articles %}
-			<div class="index_article_content">
-				<div class="index_article_line">
-					<a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.bname }}</a>
-					<div class="index_article_info">
-						<span>{{ article.author_name }} ／文</span>
-						<a class="index_liked_count">{{ article.liked_count }}</a>
-						<a class="index_timestamp">{{ article.timestamp }}</a>
 					</div>
 				</div>
 			</div>
