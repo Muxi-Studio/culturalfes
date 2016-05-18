@@ -27,8 +27,9 @@ def index():
     animes = Anime.query.all()
     photos = Photo.query.all()
     articles = Article.query.all()
+    notices = Notice.query.all()
     return render_template('/main/index.html', movies=movies[:3], courses=courses[:3],
-            animes=animes[:3], photos=photos[:3], articles=articles[:3])
+            animes=animes[:3], photos=photos[:3], articles=articles[:3], notices=notices[:3])
 
 
 @main.route('/upload/', methods=['GET', 'POST'])
