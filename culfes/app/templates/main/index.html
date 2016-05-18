@@ -12,9 +12,9 @@
 		<div class="index_notice_box">
 		{% for notice in notices %}
 			<div class="index_notice_content">
-				<div class="index_notice_dot"></div>
+                <div class="index_notice_dot"></div>
 				<a class="index_notice_time">{{ notice.timestamp }}</a>
-                <div class="index_notice_line"><a href="{{ url_for('get_notice', id=notice.id) }}">{{ notice.bname }}</a></div>
+                <div class="index_notice_line"><a href="{{ url_for('main.get_notice', id=notice.id) }}">{{ notice.name }}</a></div>
 			</div>
 		{% endfor %}
 		</div>
