@@ -176,14 +176,21 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 				position: relative;
 				height: 50px;
 				.index_tu_info{
-					width: 50%;
+					width: 80%;
 					height: 50px;
-					a{
-						font-size: nth($font-size,4);
-						color: nth($font-color,3);
-						line-height: 34px;
+					.index_tu_title_name{
+						display: block;
+						width: 200px;
+						height: 40px;
+						a{
+							font-size: nth($font-size,4);
+							color: nth($font-color,3);
+							line-height: 34px;
+						}
 					}
-					span{
+					.index_tu_time_name{
+						width: 200px;
+						display: block;
 						font-size: nth($font-size,5);
 						color: nth($font-color,3);
 					}
@@ -193,9 +200,16 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 					position: absolute;
 					bottom: 0px;
 					right: 0px;
-					a{
-						font-size: nth($font-size,5);
-						color: nth($font-color,3);
+					text-align: center;
+					.index_liked_count{
+						display: block;
+						width: 30px;
+						text-align: center;
+						a{
+							text-align: center;
+							font-size: nth($font-size,5);
+							color: nth($font-color,3);
+						}
 					}
 				}
 			}
@@ -226,6 +240,7 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 					color: nth($font-color,3);
 				}
 				.index_article_info{
+					width: 400px;
 					height: $index_article_linehei;
 					position: absolute;
 					right: 25px;
@@ -234,20 +249,41 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 					span{
 						font-size: nth($font-size,3);
 						color:nth($font-color,2);
+						margin-right: 30px;
 					}
 					a{
 						font-size: nth($font-size,4);
 						color: nth($font-color,2);
-						margin-left: 30px;
 					}
 					@media screen and (max-device-width:320px){
 						display: none;
 					}
-						.index_liked_count:before{
-							content:url("/static/img/heart-s.png")
+						.index_author_name{
+							display: inline-block;
+							width: 200px;
+							text-align: right;
+							margin-right: 30px;
+							font-size: nth($font-size,3);
+							color:nth($font-color,2);
 						}
-						.index_timestamp:before{
-							content:url("/static/img/time.png")
+						.index_liked_count{
+							&:before{
+								content:url("/static/img/heart-s.png");
+							}
+							display: inline-block;
+							width: 60px;
+							margin-right: 10px;
+							font-size: nth($font-size,4);
+							color:nth($font-color,2);
+						}
+						.index_timestamp{
+							&:before{
+								content:url("/static/img/time.png");
+							}
+							display: inline-block;
+							width: 80px;
+							font-size: nth($font-size,4);
+							color:nth($font-color,2);
 						}
 				}
 			}

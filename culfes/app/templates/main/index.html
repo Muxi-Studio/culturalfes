@@ -13,7 +13,7 @@
 		{% for notice in notices %}
 			<div class="index_notice_content">
                 <div class="index_notice_dot"></div>
-				<a class="index_notice_time">{{ notice.timestamp }}</a>
+				<a class="index_notice_time">{{ notice.timestamp[5:10] }}</a>
                 <div class="index_notice_line"><a href="{{ url_for('main.get_notice', id=notice.id) }}">{{ notice.name }}</a></div>
 			</div>
 		{% endfor %}
@@ -21,7 +21,7 @@
 	</div>
 	<div class="index_article">
 		<div class="index_title">
-			<div class="index_tag tag1">网文</div>
+			<div class="index_tag tag2">网文</div>
 			<a class="index_more" href="{{ url_for('main.articles') }}">更多 ></a>
 		</div>
 		<div class="index_article_box">
@@ -30,9 +30,9 @@
 				<div class="index_article_line">
 					<a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.bname }}</a>
 					<div class="index_article_info">
-						<span>{{ article.author_name }} ／文</span>
-						<a class="index_liked_count">{{ article.liked_count }}</a>
-						<a class="index_timestamp">{{ article.timestamp }}</a>
+						<div class="index_author_name">{{ article.author_name }} ／文</div>
+						<div class="index_liked_count">{{ article.liked_count }}</div>
+						<div class="index_timestamp">{{ article.timestamp }}</div>
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 	</div>
 	<div class="index_tu">
 		<div class="index_title">
-			<div class="index_tag tag2">电影</div>
+			<div class="index_tag tag1">电影</div>
 			<a class="index_more" href="{{ url_for('main.movies') }}">更多 ></a>
 		</div>
 		<div class="index_tu_box">
@@ -50,13 +50,16 @@
 				<div class="index_tu_img"><a href="{{ url_for('main.get_movie', id=movie.id) }}"><img src="{{ movie.url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.bname }}</a>
-						<span>{{ movie.timestamp }}</span>
-						<span>{{ movie.author_name }}</span>
+						<div class="index_tu_title_name"><a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.bname }}</a>
+						</div>
+						<div class="index_tu_time_name">
+							<span>{{ movie.timestamp[5:10] }}</span>
+							<span>{{ movie.author_name }}</span>
+						</div>
 					</div>
 					<div class="index_tu_like">
-						<img src="../static/img/heart.png">
-						<a>{{ movie.liked_count }}</a>
+						<img src="../../static/img/heart.png">
+						<div class="index_liked_count"><a>{{ movie.liked_count }}</a></div>
 					</div>
 				</div>
 			</div>
@@ -74,13 +77,16 @@
 				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.bname }}</a>
-						<span>{{ photo.timestamp }}</span>
-						<span>{{ photo.author_name }}</span>
+						<div class="index_tu_title_name"><a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.bname }}</a>
+						</div>
+						<div class="index_tu_time_name">
+							<span>{{ photo.timestamp[5:10] }}</span>
+							<span>{{ photo.author_name }}</span>
+						</div>
 					</div>
 					<div class="index_tu_like">
 						<img src="../../static/img/heart.png">
-						<a>{{ photo.liked_count }}</a>
+						<div class="index_liked_count"><a>{{ photo.liked_count }}</a></div>
 					</div>
 				</div>
 			</div>
@@ -98,13 +104,16 @@
 				<div class="index_tu_img"><a href="{{ url_for('main.get_anime', id=anime.id) }}"><img src="{{ anime.url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_anime', id=anime.id) }}">{{ anime.bname }}</a>
-						<span>{{ anime.timestamp }}</span>
-						<span>{{ anime.author_name }}</span>
+						<div class="index_tu_title_name"><a href="{{ url_for('main.get_anime', id=anime.id) }}">{{ anime.bname }}</a>
+						</div>
+						<div class="index_tu_time_name">
+							<span>{{ anime.timestamp[5:10] }}</span>
+							<span>{{ anime.author_name }}</span>
+						</div>
 					</div>
 					<div class="index_tu_like">
 						<img src="../../static/img/heart.png">
-						<a>{{ anime.liked_count }}</a>
+						<div class="index_liked_count"><a>{{ anime.liked_count }}</a></div>
 					</div>
 				</div>
 			</div>
@@ -122,13 +131,16 @@
 				<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="{{ course.url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.bname }}</a>
-						<span>{{ course.timestamp }}</span>
-						<span>{{ course.author_name }}</span>
+						<div class="index_tu_title_name"><a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.bname }}</a>
+						</div>
+						<div class="index_tu_time_name">
+							<span>{{ course.timestamp[5:10] }}</span>
+							<span>{{ course.author_name }}</span>
+						</div>
 					</div>
 					<div class="index_tu_like">
 						<img src="../../static/img/heart.png">
-						<a>{{ course.liked_count }}</a>
+						<div class="index_liked_count"><a>{{ course.liked_count }}</a></div>
 					</div>
 				</div>
 			</div>

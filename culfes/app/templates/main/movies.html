@@ -12,7 +12,7 @@
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.bname }}</a>
-						<span>{{ movie.timestamp }}</span>
+						<span>{{ movie.timestamp[5:10] }}</span>
 						<span>{{ movie.author_name }}</span>
 					</div>
 					<div class="index_tu_like">

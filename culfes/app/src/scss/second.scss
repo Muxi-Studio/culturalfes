@@ -3,8 +3,9 @@ $underlineb-bc:#c9c9c9;
 $font-size:39.58px 25px 22.92px 20.83px;
 $font-color:#f5f5f5 #c9c9c9 #626262;
 .second_box{
+	width: 100%;
 	padding:0 10%;
-	margin-bottom: 15%;
+	// margin-bottom: 15%;
 }
 
 .second_head{
@@ -25,6 +26,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 		font-family: "Microsoft YaHei";
 		color: nth($font-color,3);
 	}
+	video {
+		max-width: 100%;
+	}
 }
 
 .second_head_title{
@@ -42,20 +46,18 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	}
 
 .second_vote{
-	position: fixed;
+	display: block;
 	height: 83px;
 	width: 100%;
-	bottom: 0;
 	border-top: 1px solid $underlineb-bc;
 	background-color: $background-color;
 	z-index: 300;
 	button{
 		height: 40px;
 		width: 200px;
-		position: absolute;
-		left: 50%;
-		top: 10px;
-		margin-left: -100px;
+		display: block;
+		margin:auto;
+		vertical-align: middle;
 		background-color: #33c157;
 		color: #ffffff;
 		font-size:nth($font-size,2);

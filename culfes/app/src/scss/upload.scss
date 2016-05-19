@@ -45,6 +45,8 @@ label{
 	height: $upload-height;
 	background-color: $upload-form-bgc;
 	margin-left: 40px;
+	border: none;
+	outline: medium;
 }
 .upload-submite{
 	display: block;

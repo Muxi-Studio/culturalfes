@@ -4,27 +4,26 @@
 	<div class="second_box">
 		<div class="second_head">
 			<span class="second_head_title">{{ photo.bname }}</span>
-			<span class="second_head_author">{{ photo.timestamp }}/{{ photo.author_name }}</span>
+			<span class="second_head_author">{{ photo.timestamp[5:10] }}/{{ photo.author_name }}</span>
 		</div>
 		<div class="second_content"><img src="{{ photo.url }}"></div>
+	    <!-- 多说评论框 start -->
+	    <div class="ds-thread" data-thread-key="{{ photo.id }}" data-title="{{ photo.bname }}" data-url="{{ url_for('main.get_photo', id=photo.id) }}"></div>
+	    <!-- 多说评论框 end -->
+	    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	    <script type="text/javascript">
+	    var duoshuoQuery = {short_name:"wenhuajie"};
+	        (function() {
+	            var ds = document.createElement('script');
+	            ds.type = 'text/javascript';ds.async = true;
+	            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	            ds.charset = 'UTF-8';
+	            (document.getElementsByTagName('head')[0] 
+	             || document.getElementsByTagName('body')[0]).appendChild(ds);
+	        })();
+	        </script>
+	    <!-- 多说公共JS代码 end -->
 	</div>
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="{{ photo.id }}" data-title="{{ photo.bname }}" data-url="{{ url_for('main.get_photo', id=photo.id) }}"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"wenhuajie"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] 
-             || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-        </script>
-    <!-- 多说公共JS代码 end -->
-
 	{% endblock %}
 	{% block captcha %}
 	<div class="c_container" id="captcha_container">

@@ -4,7 +4,7 @@
 	<div class="second_box">
 		<div class="second_head">
 			<span class="second_head_title">{{ article.bname }}</span>
-			<span class="second_head_author">{{ article.timestamp }}/{{ article.author_name }}</span>
+			<span class="second_head_author">{{ article.timestamp[5:10] }}/{{ article.author_name }}</span>
 		</div>
 	    <div class="second_content">{{ article.body_html|safe }}</div>
 	    <!-- 多说评论框 start -->
@@ -23,6 +23,7 @@
 	        })();
 	        </script>
 	    <!-- 多说公共JS代码 end -->
+	</div>
 	{% endblock %}
 	{% block captcha %}
 	<div class="c_container" id="captcha_container">
