@@ -9,11 +9,11 @@
 		{% for article in articles %}
 		<div class="index_article_content">
 			<div class="index_article_line">
-                   <a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.bname }}</a>
+                   <a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.present_name }}</a>
 				<div class="index_article_info">
 					<span>{{ article.author_name }} ／文</span>
 					<a class="index_liked_count">{{ article.liked_count }}</a>
-					<a class="index_timestamp">{{ article.timestamp }}</a>
+					<a class="index_timestamp">{{ article.a_time }}</a>
 				</div>
 			</div>
 		</div>

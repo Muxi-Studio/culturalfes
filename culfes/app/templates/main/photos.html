@@ -11,8 +11,8 @@
                 <div class="index_tu_img"><img src="{{ photo.url }}"></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.bname }}</a>
-						<span>{{ photo.timestamp }}</span>
+						<a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.present_name }}</a>
+						<span>{{ photo.a_time }}</span>
 						<span>{{ photo.author_name }}</span>
 					</div>
 					<div class="index_tu_like">

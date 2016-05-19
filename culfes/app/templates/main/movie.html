@@ -1,14 +1,14 @@
 {% extends 'main/base.html' %}
-{% block title %}{{ movie.bname }}-{{ movie.author_name }}{% endblock %}
+{% block title %}{{ movie.present_name }}-{{ movie.author_name }}{% endblock %}
 	{% block page_content %}
 	<div class="second_box">
 		<div class="second_head">
-			<span class="second_head_title">{{ movie.bname }}</span>
-			<span class="second_head_author">{{ movie.timestamp }}/{{ movie.author_name }}</span>
+			<span class="second_head_title">{{ movie.present_name }}</span>
+			<span class="second_head_author">{{ movie.a_time }}/{{ movie.author_name }}</span>
 		</div>
         <div class="second_content"><video src="{{ movie.upload_url }}" controls="control"></video></div>
 	    <!-- 多说评论框 start -->
-	    <div class="ds-thread" data-thread-key="{{ movie.id }}" data-title="{{ movie.bname }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
+	    <div class="ds-thread" data-thread-key="{{ movie.id }}" data-title="{{ movie.present_name }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
 	    <!-- 多说评论框 end -->
 	    <!-- 多说公共JS代码 start  -->
 	    <script type="text/javascript">

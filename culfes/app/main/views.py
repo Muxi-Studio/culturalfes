@@ -71,12 +71,12 @@ def upload_file():
             else:
                 UPLOAD_FOLDER = 'no'
             item = W_Movie(
-                    name=filename,
-                    bname=file_name,
+                    upload_name=filename,
+                    present_name=file_name,
                     author_name=author_name,
-                    url=UPLOAD_FOLDER + filename,
-                    upload_url=upload_url,
-                    timestamp=time.strftime("%a %b %d %H:%M:%S %Y",time.localtime())[:10]
+                    upload_url=UPLOAD_FOLDER + filename,
+                    video_url=upload_url,
+                    a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
 
         elif tag == 'article':
@@ -86,12 +86,12 @@ def upload_file():
             else:
                 UPLOAD_FOLDER = 'no'
             item = W_Article(
-                    name=filename,
-                    bname=file_name,
+                    upload_name=filename,
+                    present_name=file_name,
                     author_name=author_name,
-                    url=UPLOAD_FOLDER + filename,
-                    upload_url=upload_url,
-                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    upload_url=UPLOAD_FOLDER + filename,
+                    video_url=upload_url,
+                    a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
 
         elif tag == 'photo':
@@ -101,12 +101,12 @@ def upload_file():
             else:
                 UPLOAD_FOLDER = 'no'
             item = W_Photo(
-                    name=filename,
-                    bname=file_name,
+                    uplaod_name=filename,
+                    present_name=file_name,
                     author_name=author_name,
-                    url=UPLOAD_FOLDER + filename,
-                    upload_url=upload_url,
-                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    upload_url=UPLOAD_FOLDER + filename,
+                    video_url=upload_url,
+                    a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
         elif tag == 'anime':
             if not upload_url:
@@ -115,12 +115,12 @@ def upload_file():
             else:
                 UPLOAD_FOLDER = 'no'
             item = W_Anime(
-                    name=filename,
-                    bname=file_name,
-                    url=UPLOAD_FOLDER + filename,
+                    upload_name=filename,
+                    present_name=file_name,
                     author_name=author_name,
-                    upload_url=upload_url,
-                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    upload_url=UPLOAD_FOLDER + filename,
+                    video_url=upload_url,
+                    a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
         elif tag == 'course':
             if not upload_url:
@@ -129,12 +129,12 @@ def upload_file():
             else:
                 UPLOAD_FOLDER = 'no'
             item = W_Course(
-                    name=filename,
-                    bname=file_name,
+                    upload_name=filename,
+                    present_name=file_name,
                     author_name=author_name,
-                    url=UPLOAD_FOLDER + filename,
-                    upload_url=upload_url,
-                    timestamp=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    upload_url=UPLOAD_FOLDER + filename,
+                    video_url=upload_url,
+                    a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
 
         db.session.add(item)

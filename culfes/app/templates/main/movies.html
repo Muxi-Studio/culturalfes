@@ -11,8 +11,8 @@
                 <div class="index_tu_img"><img src="{{ movie.url }}"></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.bname }}</a>
-						<span>{{ movie.timestamp }}</span>
+						<a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.present__name }}</a>
+						<span>{{ movie.a_time }}</span>
 						<span>{{ movie.author_name }}</span>
 					</div>
 					<div class="index_tu_like">

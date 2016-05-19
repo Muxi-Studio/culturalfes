@@ -1,14 +1,14 @@
 {% extends 'main/base.html' %}
-{% block title %}{{ anime.bname }}-{{ anime.author_name }}{% endblock %}
+{% block title %}{{ anime.present_name }}-{{ anime.author_name }}{% endblock %}
 	{% block page_content %}
 	<div class="second_box">
 		<div class="second_head">
-			<span class="second_head_title">{{ anime.bname }}</span>
-			<span class="second_head_author">{{ anime.timestamp }}/{{ anime.author_name }}</span>
+			<span class="second_head_title">{{ anime.present_name }}</span>
+			<span class="second_head_author">{{ anime.a_time }}/{{ anime.author_name }}</span>
 		</div>
         <div class="second_content"><video src="{{ anime.upload_url }}" controls="control"></video></div>
         	<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="{{ anime.id }}" data-title="{{ anime.bname }}" data-url="{{ url_for('main.get_anime', id=anime.id) }}"></div>
+		<div class="ds-thread" data-thread-key="{{ anime.id }}" data-title="{{ anime.present_name }}" data-url="{{ url_for('main.get_anime', id=anime.id) }}"></div>
 		    <!-- 多说评论框 end -->
 		    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		    <script type="text/javascript">

@@ -1,14 +1,14 @@
 {%extends 'main/base.html' %}
-{% block title %}{{ course.bname }}-{{ course.bname }}{% endblock %}
+{% block title %}{{ course.present_name }}-{{ course.author_name }}{% endblock %}
 	{% block page_content %}
 	<div class="second_box">
 		<div class="second_head">
-			<span class="second_head_title">{{ course.bname }}</span>
-			<span class="second_head_author">{{ course.timestamp }}/{{ course.author_name }}</span>
+			<span class="second_head_title">{{ course.present_name }}</span>
+			<span class="second_head_author">{{ course.a_time }}/{{ course.author_name }}</span>
 		</div>
         <div class="second_content"><video src="{{ course.upload_url }}" controls="control"></video></div>
 	    <!-- 多说评论框 start -->
-	    <div class="ds-thread" data-thread-key="{{ course.id }}" data-title="{{ course.bname }}" data-url="{{ url_for('main.get_course', id=course.id) }}"></div>
+	    <div class="ds-thread" data-thread-key="{{ course.id }}" data-title="{{ course.present_name }}" data-url="{{ url_for('main.get_course', id=course.id) }}"></div>
 	    <!-- 多说评论框 end -->
 	    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	    <script type="text/javascript">
