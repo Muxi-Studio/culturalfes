@@ -8,7 +8,7 @@
 		<div class="index_tu_box">
 			{% for anime in animes %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><img src=""></div>
+                <div class="index_tu_img"><img src="{{ anime.upload_url }}"></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<a href="{{ url_for('main.get_anime', id=anime.id) }}">{{ anime.present_name }}</a>
@@ -16,7 +16,7 @@
 						<span>{{ anime.author_name }}</span>
 					</div>
 					 <div class="index_tu_like">
-						<img src="../static/img/heart.png">
+						<img src="../../static/img/heart.png">
 						<a>{{ anime.liked_count }}</a>
 					</div>
 				</div>

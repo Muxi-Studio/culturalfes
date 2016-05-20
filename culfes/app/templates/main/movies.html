@@ -8,10 +8,10 @@
 		<div class="index_tu_box">
 			{% for movie in movies %}
 			<div class="index_tu_content">
-                <div class="index_tu_img"><img src="{{ movie.url }}"></div>
+                <div class="index_tu_img"><img src="{{ movie.upload_url }}"></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.present__name }}</a>
+						<a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.present_name }}</a>
 						<span>{{ movie.a_time }}</span>
 						<span>{{ movie.author_name }}</span>
 					</div>

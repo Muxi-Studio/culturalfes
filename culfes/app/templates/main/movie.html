@@ -6,7 +6,7 @@
 			<span class="second_head_title">{{ movie.present_name }}</span>
 			<span class="second_head_author">{{ movie.a_time }}/{{ movie.author_name }}</span>
 		</div>
-        <div class="second_content"><video src="{{ movie.upload_url }}" controls="control"></video></div>
+        <div class="second_content"><video src="{{ movie.video_url }}" controls="control"></video></div>
 	    <!-- 多说评论框 start -->
 	    <div class="ds-thread" data-thread-key="{{ movie.id }}" data-title="{{ movie.present_name }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
 	    <!-- 多说评论框 end -->

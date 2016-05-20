@@ -59,7 +59,7 @@ def upload_file():
                 filename = time.strftime("%a %b %d %H:%M:%S %Y",
                         time.localtime()) + ' ' + file_name + '.' + file.filename.rsplit('.', 1)[1]
             else:
-                flash("请上传文件压缩包!")
+                flash("请添加文件压缩包或链接!")
                 return redirect(url_for('main.upload_file'))
         else:
             filename = time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()) + ' ' + file_name
@@ -101,7 +101,7 @@ def upload_file():
             else:
                 UPLOAD_FOLDER = 'no'
             item = W_Photo(
-                    uplaod_name=filename,
+                    upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
                     upload_url=UPLOAD_FOLDER + filename,

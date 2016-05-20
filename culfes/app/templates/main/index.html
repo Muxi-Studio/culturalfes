@@ -13,7 +13,7 @@
 		{% for notice in notices %}
 			<div class="index_notice_content">
                 <div class="index_notice_dot"></div>
-				<a class="index_notice_time">{{ notice.time }}</a>
+				<a class="index_notice_time">{{ notice.a_time }}</a>
                 <div class="index_notice_line"><a href="{{ url_for('main.get_notice', id=notice.id) }}">{{ notice.name }}</a></div>
 			</div>
 		{% endfor %}
@@ -47,7 +47,7 @@
 		<div class="index_tu_box">
 			{% for movie in movies %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_movie', id=movie.id) }}"><img src="{{ movie.url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_movie', id=movie.id) }}"><img src="{{ movie.upload_url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.present_name }}</a>
@@ -74,7 +74,7 @@
 		<div class="index_tu_box">
 			{% for photo in photos %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.upload_url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.present_name }}</a>
@@ -101,7 +101,7 @@
 		<div class="index_tu_box">
 			{% for anime in animes %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_anime', id=anime.id) }}"><img src="{{ anime.url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_anime', id=anime.id) }}"><img src="{{ anime.upload_url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_anime', id=anime.id) }}">{{ anime.present_name }}</a>
@@ -128,7 +128,7 @@
 		<div class="index_tu_box">
 			{% for course in courses %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="{{ course.url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="{{ course.upload_url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.present_name }}</a>
