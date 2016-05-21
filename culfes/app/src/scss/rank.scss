@@ -21,16 +21,25 @@ $font-size: 27.08px 16.67px 12.92px;
 }
 .rank-movie-block,.rank-text-block,.rank-photo-block,.rank-catoon-block,.rank-course-block{
 	float: left;
-	margin-left: 60px;
+	margin-left: 40px;
 }
 .rank-movie-rank,.rank-text-rank,.rank-photo-rank,.rank-catoon-rank,.rank-course-rank{
-	margin-left: -30px;
+	margin-left: -20px;
 	border-left:1px dotted #c9c9c9;
 	margin-top: 10px;
 	margin-bottom: 20px;
 	.rank_content{
+		width: 200px;
 		height: 30px;
-		margin-left: 30px;
+		margin-left: 20px;
+	}
+	.rank_content_title{
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		width: 150px;
+		text-overflow:ellipsis;
+		white-space: nowrap;
 		overflow: hidden;
 	}
 	a{
@@ -39,11 +48,15 @@ $font-size: 27.08px 16.67px 12.92px;
 		font-size:nth($font-size,2);
 		color:nth($font-color,3);
 	}
+	.rank_content_liked{
+		display: inline-block;
+		width: 30px;
+		text-align: right;
+	}
 	span{
-		margin-left: 120px;
 		font-size:nth($font-size,3);
 		color:nth($font-color,2);
-		line-height: 12.92px;
+		line-height: 30px;
 		vertical-align: text-bottom;
 	}
 }

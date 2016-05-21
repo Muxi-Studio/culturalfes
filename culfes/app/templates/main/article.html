@@ -8,7 +8,7 @@
 		</div>
 	    <div class="second_content">{{ article.body_html|safe }}</div>
 	    <!-- 多说评论框 start -->
-	    <div class="ds-thread" data-thread-key="100+{{ article.id }}" data-title="{{ article.present_name }}" data-url="{{ url_for('main.get_article', id=article.id) }}"></div>
+	    <div class="ds-thread" data-thread-key="r{{ article.id }}" data-title="{{ article.present_name }}" data-url="{{ url_for('main.get_article', id=article.id) }}"></div>
 	    <!-- 多说评论框 end -->
 	    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	    <script type="text/javascript">
@@ -32,7 +32,7 @@
 				<div class="c_box">
 				<div id="captcha"></div>
 				<div class="c_box">
-					<button id="submit-button">提交</button>
+					<!-- <button id="submit-button">提交</button> -->
 				</div>
 				<script src="http://static.geetest.com/static/tools/gt.js"></script>
 				<script>
@@ -71,13 +71,14 @@
 <script src="../../../static/js/second.js"></script>
 {% endblock %}
 {% block flash_message %}
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul class="submite_flash">
-		{% for message in messages %}
-		<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-	{% endwith %}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<div class="submite_flash" id="submit_flash">
+			{% for message in messages %}
+			<div class="submite_message">{{ message }}</div>
+			{% endfor %}
+			<div class="submit_close" id="submit_close">x</div>
+		</div>
+		{% endif %}
+		{% endwith %}
 {% endblock %}
