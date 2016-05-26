@@ -278,8 +278,9 @@ button {
             content: url("/static/img/time.png"); }
 
 .rank-main {
-  margin-top: 40px;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 1230px;
+  margin: 40px auto 0px; }
 
 .rank-movie-head, .rank-text-head, .rank-photo-head, .rank-catoon-head, .rank-course-head {
   width: 190px;
@@ -334,12 +335,14 @@ button {
 
 .second_box {
   width: 100%;
-  padding: 0 10%; }
+  padding: 0 10%;
+  margin-bottom: 100px; }
 
 .second_head {
   display: block;
   margin-top: 50px;
-  line-height: 50px; }
+  height: 50px;
+  border-bottom: 1px solid #c9c9c9; }
 
 .second_content {
   display: block;
@@ -368,6 +371,15 @@ button {
   font-size: 20.83px;
   font-family: "Microsoft YaHei";
   color: #c9c9c9; }
+
+.second_notice {
+  font-size: 25px; }
+
+.second_notice_time {
+  font-size: 16.67px; }
+
+.ds-powered-by {
+  display: none; }
 
 .second_vote {
   position: fixed;
@@ -450,7 +462,7 @@ button {
   cursor: pointer; }
 
 .upload-main {
-  width: 70%;
+  width: 820px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 6%;

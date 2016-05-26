@@ -5,14 +5,14 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 .second_box{
 	width: 100%;
 	padding:0 10%;
-	// margin-bottom: 15%;
+	margin-bottom: 100px;
 }
 
 .second_head{
 	display: block;
 	margin-top: 50px;
-	line-height: 50px;
-	// border-bottom: 1px solid $underlineb-bc;
+	height: 50px;
+	border-bottom: 1px solid $underlineb-bc;
 	}
 .second_content{
 	display: block;
@@ -44,7 +44,16 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
     font-family: "Microsoft YaHei";
     color: nth($font-color,2);
 	}
+.second_notice{
+	font-size: nth($font-size,2);
+}
+.second_notice_time{
+	font-size: 16.67px;
+}
 
+.ds-powered-by{
+	display: none;
+}
 .second_vote{
 	position: fixed;
 	bottom: 0px;
