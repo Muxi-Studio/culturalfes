@@ -8,16 +8,19 @@
 		<div class="index_tu_box">
 			{% for course in courses %}
 			<div class="index_tu_content">
-                <div class="index_tu_img"><img src="{{ course.upload_url }}"></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="{{ course.upload_url }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
-						<a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.present_name }}</a>
-						<span>{{ course.a_time }}</span>
-						<span>{{ course.author_name }}</span>
+						<div class="index_tu_title_name"><a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.present_name }}</a>
+						</div>
+						<div class="index_tu_time_name">
+							<span>{{ course.a_time }}</span>
+							<span>{{ course.author_name }}</span>
+						</div>
 					</div>
 					<div class="index_tu_like">
 						<img src="../../static/img/heart.png">
-						<a>{{ course.liked_count }}</a>
+						<div class="index_liked_count"><a>{{ course.liked_count }}</a></div>
 					</div>
 				</div>
 			</div>

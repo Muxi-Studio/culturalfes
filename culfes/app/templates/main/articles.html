@@ -3,17 +3,17 @@
 {% block page_content %}
 	<div class="index_article index_morecontent">
 	<div class="index_title">
-		<div class="index_tag tag1">网文</div>
+		<div class="index_tag tag2">网文</div>
 	</div>
 	<div class="index_article_box">
 		{% for article in articles %}
 		<div class="index_article_content">
 			<div class="index_article_line">
-                   <a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.present_name }}</a>
+				<a class="index_article_title" href="{{ url_for('main.get_article', id=article.id) }}">{{ article.present_name }}</a>
 				<div class="index_article_info">
-					<span>{{ article.author_name }} ／文</span>
-					<a class="index_liked_count">{{ article.liked_count }}</a>
-					<a class="index_timestamp">{{ article.a_time }}</a>
+					<div class="index_author_name">{{ article.author_name }} ／文</div>
+					<div class="index_liked_count">{{ article.liked_count }}</div>
+					<div class="index_timestamp">{{ article.a_time }}</div>
 				</div>
 			</div>
 		</div>

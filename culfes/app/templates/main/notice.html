@@ -3,9 +3,9 @@
 	{% block page_content %}
 	<div class="second_box">
 		<div class="second_head">
-			<span class="second_head_title">{{ notice.name }}</span>
-			<span class="second_head_author">{{ notice.a_time }}</span>
-            <div class="second_content"><p>{{ notice.body }}</p></div>
+			<span class="second_head_title second_notice">{{ notice.name }}</span>
+			<span class="second_head_author second_notice_time">{{ notice.a_time }}</span>
 		</div>
+		<div class="second_content"><p>{{ notice.body }}</p></div>
 	</div>
 	{% endblock %}

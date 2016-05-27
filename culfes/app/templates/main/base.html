@@ -10,6 +10,7 @@
 </head>
 <body>
 	<div class="content">
+		{% block flash_message %}{% endblock %}
 		{% block guide %}
 			<div class="guide">
 				<div class="button_list">
@@ -21,6 +22,5 @@
 	</div>
 	{% block captcha %}{% endblock %}
 	{% block vote_button %}{% endblock %}
-	{% block flash_message %}{% endblock %}
 </body>
 </html>

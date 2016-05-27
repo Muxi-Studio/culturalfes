@@ -6,9 +6,9 @@
 			<span class="second_head_title">{{ movie.present_name }}</span>
 			<span class="second_head_author">{{ movie.a_time }}/{{ movie.author_name }}</span>
 		</div>
-        <div class="second_content"><video src="{{ movie.video_url }}" controls="control"></video></div>
+        <div class="second_content second_media"><video src="{{ movie.video_url }}" controls="control"></video></div>
 	    <!-- 多说评论框 start -->
-	    <div class="ds-thread" data-thread-key="1000000+{{ movie.id }}" data-title="{{ movie.present_name }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
+	    <div class="ds-thread" data-thread-key="m{{ movie.id }}" data-title="{{ movie.present_name }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
 	    <!-- 多说评论框 end -->
 	    <!-- 多说公共JS代码 start  -->
 	    <script type="text/javascript">
@@ -32,7 +32,7 @@
 				<div class="c_box">
 				<div id="captcha"></div>
 				<div class="c_box">
-					<button id="submit-button">提交</button>
+					<!-- <button id="submit-button">提交</button> -->
 				</div>
 				<script src="http://static.geetest.com/static/tools/gt.js"></script>
 				<script>
@@ -73,11 +73,12 @@
 	{% block flash_message %}
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
-		<ul class="submite_flash">
+		<div class="submite_flash" id="submit_flash">
 			{% for message in messages %}
-			<li>{{ message }}</li>
+			<div class="submite_message">{{ message }}</div>
 			{% endfor %}
-		</ul>
+			<div class="submit_close" id="submit_close">x</div>
+		</div>
 		{% endif %}
 		{% endwith %}
 	{% endblock %}

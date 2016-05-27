@@ -278,8 +278,9 @@ button {
             content: url("/static/img/time.png"); }
 
 .rank-main {
-  margin-top: 40px;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 1230px;
+  margin: 40px auto 0px; }
 
 .rank-movie-head, .rank-text-head, .rank-photo-head, .rank-catoon-head, .rank-course-head {
   width: 190px;
@@ -295,27 +296,38 @@ button {
 
 .rank-movie-block, .rank-text-block, .rank-photo-block, .rank-catoon-block, .rank-course-block {
   float: left;
-  margin-left: 60px; }
+  margin-left: 40px; }
 
 .rank-movie-rank, .rank-text-rank, .rank-photo-rank, .rank-catoon-rank, .rank-course-rank {
-  margin-left: -30px;
+  margin-left: -20px;
   border-left: 1px dotted #c9c9c9;
   margin-top: 10px;
   margin-bottom: 20px; }
   .rank-movie-rank .rank_content, .rank-text-rank .rank_content, .rank-photo-rank .rank_content, .rank-catoon-rank .rank_content, .rank-course-rank .rank_content {
+    width: 200px;
     height: 30px;
-    margin-left: 30px;
+    margin-left: 20px; }
+  .rank-movie-rank .rank_content_title, .rank-text-rank .rank_content_title, .rank-photo-rank .rank_content_title, .rank-catoon-rank .rank_content_title, .rank-course-rank .rank_content_title {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden; }
   .rank-movie-rank a, .rank-text-rank a, .rank-photo-rank a, .rank-catoon-rank a, .rank-course-rank a {
     color: #000;
     line-height: 30px;
     font-size: 16.67px;
     color: #626262; }
+  .rank-movie-rank .rank_content_liked, .rank-text-rank .rank_content_liked, .rank-photo-rank .rank_content_liked, .rank-catoon-rank .rank_content_liked, .rank-course-rank .rank_content_liked {
+    display: inline-block;
+    width: 30px;
+    text-align: right; }
   .rank-movie-rank span, .rank-text-rank span, .rank-photo-rank span, .rank-catoon-rank span, .rank-course-rank span {
-    margin-left: 120px;
     font-size: 12.92px;
     color: #c9c9c9;
-    line-height: 12.92px;
+    line-height: 30px;
     vertical-align: text-bottom; }
 
 .rank-movie-rank {
@@ -323,26 +335,28 @@ button {
 
 .second_box {
   width: 100%;
-  padding: 0 10%; }
+  padding: 0 10%;
+  margin-bottom: 100px; }
 
 .second_head {
   display: block;
   margin-top: 50px;
-  line-height: 50px;
+  height: 50px;
   border-bottom: 1px solid #c9c9c9; }
 
 .second_content {
   display: block;
   margin-top: 30px;
   margin-bottom: 50px;
+  text-align: left;
+  line-height: 50px;
+  font-size: 20.83px;
+  font-family: "Microsoft YaHei";
+  color: #626262; }
+
+.second_media {
   text-align: center; }
-  .second_content p {
-    text-align: left;
-    line-height: 50px;
-    font-size: 20.83px;
-    font-family: "Microsoft YaHei";
-    color: #626262; }
-  .second_content video {
+  .second_media video {
     max-width: 100%; }
 
 .second_head_title {
@@ -358,19 +372,32 @@ button {
   font-family: "Microsoft YaHei";
   color: #c9c9c9; }
 
+.second_notice {
+  font-size: 25px; }
+
+.second_notice_time {
+  font-size: 16.67px; }
+
+.ds-powered-by {
+  display: none; }
+
 .second_vote {
-  display: block;
+  position: fixed;
+  bottom: 0px;
   height: 83px;
   width: 100%;
   border-top: 1px solid #c9c9c9;
   background-color: #f5f5f5;
   z-index: 300; }
   .second_vote button {
+    position: absolute;
     height: 40px;
     width: 200px;
     display: block;
-    margin: auto;
-    vertical-align: middle;
+    top: 50%;
+    margin-top: -20px;
+    left: 50%;
+    margin-left: -100px;
     background-color: #33c157;
     color: #ffffff;
     font-size: 25px;
@@ -406,18 +433,36 @@ button {
   background-color: #33c157; }
 
 .submite_flash {
-  position: fixed;
-  width: 240px;
-  bottom: 3px;
-  left: 50%;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 30px;
+  background-color: #33c157;
   text-align: center;
-  margin-left: -120px;
   list-style: none;
   font-size: 20px;
-  z-index: 350; }
+  z-index: 350;
+  line-height: 30px;
+  color: #f5f5f5;
+  overflow: hidden; }
+
+.submite_message {
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  display: inline-block;
+  width: 200px; }
+
+.submit_close {
+  width: 20px;
+  float: right;
+  line-height: 30px;
+  color: #f5f5f5;
+  display: block;
+  cursor: pointer; }
 
 .upload-main {
-  width: 70%;
+  width: 820px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 6%;
