@@ -6,6 +6,7 @@ __pycache__/
 .DS_Store
 app.ini
 wsgi.py
+dump.rdb
 
 # C extensions
 *.so
