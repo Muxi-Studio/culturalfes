@@ -13,6 +13,7 @@ dump.rdb
 
 # Distribution / packaging
 .Python
+redis/
 ENV/
 venv/
 build/
