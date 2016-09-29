@@ -289,6 +289,7 @@ def get_course(id):
 @main.route('/photo/<int:id>/', methods=["GET", "POST"])
 def get_photo(id):
     photo = Photo.query.get_or_404(id)
+    photo_urls = photo.upload_url.split(' ')
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -304,7 +305,7 @@ def get_photo(id):
             return redirect(url_for('main.get_photo', id=photo.id))
     else:
         session['vote'] = 0
-    return render_template('main/photo.html', photo=photo)
+    return render_template('main/photo.html', photo=photo, photo_urls=photo_urls)
 
 
 @main.route('/notice/<int:id>/')

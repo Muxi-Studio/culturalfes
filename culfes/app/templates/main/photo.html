@@ -6,7 +6,7 @@
 			<span class="second_head_title">{{ photo.present_name }}</span>
 			<span class="second_head_author">{{ photo.a_time }}/{{ photo.author_name }}</span>
 		</div>
-		<div class="second_content second_media"><img src="{{ photo.upload_url }}"></div>
+        <div class="second_content second_media">{% for eachPhoto in photo_urls %}<img src="{{ eachPhoto }}">{% endfor %}</div>
 	    <!-- 多说评论框 start -->
 	    <div class="ds-thread" data-thread-key="p{{ photo.id }}" data-title="{{ photo.present_name }}" data-url="{{ url_for('main.get_photo', id=photo.id) }}"></div>
 	    <!-- 多说评论框 end -->
