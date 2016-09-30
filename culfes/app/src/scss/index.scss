@@ -43,6 +43,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	}
 }
 
+
+
+
 .index_tag{
 	width: $tag_width;
 	height: $tag_height;
@@ -110,6 +113,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 				border-bottom: 1px solid silver;
 				margin-left: 20px;
 				width: 80%;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
 				a{
 					line-height: 35px;
 					font-size: nth($font-size,4);
@@ -182,6 +188,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 						display: block;
 						width: 200px;
 						height: 40px;
+						text-overflow:ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
 						a{
 							font-size: nth($font-size,4);
 							color: nth($font-color,3);
@@ -193,6 +202,12 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 						display: block;
 						font-size: nth($font-size,5);
 						color: nth($font-color,3);
+						text-overflow:ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+						span{
+							margin-right: 5px;
+						}
 					}
 				}
 				.index_tu_like{
@@ -234,10 +249,15 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 				height: 47px;
 				background-color: $index_item_bc;
 				.index_article_title{
+					display: inline-block;
+					width: calc(100% - 500px);
 					line-height: $index_article_linehei;
 					margin-left: 13px;
 					font-size: nth($font-size,1);
 					color: nth($font-color,3);
+					text-overflow:ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
 				}
 				.index_article_info{
 					width: 400px;
@@ -246,6 +266,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 					right: 25px;
 					display: inline-block;
 					line-height: $index_article_linehei;
+					text-overflow:ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
 					span{
 						font-size: nth($font-size,3);
 						color:nth($font-color,2);
@@ -260,11 +283,15 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 					}
 						.index_author_name{
 							display: inline-block;
+							height: $index_article_linehei;
 							width: 200px;
 							text-align: right;
 							margin-right: 30px;
 							font-size: nth($font-size,3);
 							color:nth($font-color,2);
+							text-overflow:ellipsis;
+							white-space: nowrap;
+							overflow: hidden;
 						}
 						.index_liked_count{
 							&:before{
@@ -275,6 +302,7 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 							margin-right: 10px;
 							font-size: nth($font-size,4);
 							color:nth($font-color,2);
+							vertical-align: top;
 						}
 						.index_timestamp{
 							&:before{
@@ -284,6 +312,7 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 							width: 80px;
 							font-size: nth($font-size,4);
 							color:nth($font-color,2);
+							vertical-align: top;
 						}
 				}
 			}

@@ -129,7 +129,10 @@ button {
     .index_notice .index_notice_box .index_notice_content .index_notice_line {
       border-bottom: 1px solid silver;
       margin-left: 20px;
-      width: 80%; }
+      width: 80%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
       .index_notice .index_notice_box .index_notice_content .index_notice_line a {
         line-height: 35px;
         font-size: 16.67px;
@@ -192,7 +195,10 @@ button {
         .index_tu .index_tu_box .index_tu_content .index_tu_info_box .index_tu_info .index_tu_title_name {
           display: block;
           width: 200px;
-          height: 40px; }
+          height: 40px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap; }
           .index_tu .index_tu_box .index_tu_content .index_tu_info_box .index_tu_info .index_tu_title_name a {
             font-size: 16.67px;
             color: #626262;
@@ -201,7 +207,12 @@ button {
           width: 200px;
           display: block;
           font-size: 12.92px;
-          color: #626262; }
+          color: #626262;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap; }
+          .index_tu .index_tu_box .index_tu_content .index_tu_info_box .index_tu_info .index_tu_time_name span {
+            margin-right: 5px; }
       .index_tu .index_tu_box .index_tu_content .index_tu_info_box .index_tu_like {
         width: 30px;
         position: absolute;
@@ -233,17 +244,25 @@ button {
       height: 47px;
       background-color: white; }
       .index_article .index_article_box .index_article_content .index_article_line .index_article_title {
+        display: inline-block;
+        width: calc(100% - 500px);
         line-height: 47px;
         margin-left: 13px;
         font-size: 22.92px;
-        color: #626262; }
+        color: #626262;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden; }
       .index_article .index_article_box .index_article_content .index_article_line .index_article_info {
         width: 400px;
         height: 47px;
         position: absolute;
         right: 25px;
         display: inline-block;
-        line-height: 47px; }
+        line-height: 47px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden; }
         .index_article .index_article_box .index_article_content .index_article_line .index_article_info span {
           font-size: 18.75px;
           color: #c9c9c9;
@@ -256,24 +275,30 @@ button {
             display: none; } }
         .index_article .index_article_box .index_article_content .index_article_line .index_article_info .index_author_name {
           display: inline-block;
+          height: 47px;
           width: 200px;
           text-align: right;
           margin-right: 30px;
           font-size: 18.75px;
-          color: #c9c9c9; }
+          color: #c9c9c9;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden; }
         .index_article .index_article_box .index_article_content .index_article_line .index_article_info .index_liked_count {
           display: inline-block;
           width: 60px;
           margin-right: 10px;
           font-size: 16.67px;
-          color: #c9c9c9; }
+          color: #c9c9c9;
+          vertical-align: top; }
           .index_article .index_article_box .index_article_content .index_article_line .index_article_info .index_liked_count:before {
             content: url("/static/img/heart-s.png"); }
         .index_article .index_article_box .index_article_content .index_article_line .index_article_info .index_timestamp {
           display: inline-block;
           width: 80px;
           font-size: 16.67px;
-          color: #c9c9c9; }
+          color: #c9c9c9;
+          vertical-align: top; }
           .index_article .index_article_box .index_article_content .index_article_line .index_article_info .index_timestamp:before {
             content: url("/static/img/time.png"); }
 
@@ -341,7 +366,6 @@ button {
 .second_head {
   display: block;
   margin-top: 50px;
-  height: 50px;
   border-bottom: 1px solid #c9c9c9; }
 
 .second_content {
@@ -362,17 +386,19 @@ button {
 .second_head_title {
   font-family: "SimSun" 宋体;
   font-size: 39.58px;
-  color: #626262; }
+  color: #626262;
+  line-height: 50px; }
 
 .second_head_author {
   margin-left: 10px;
-  font-size: 25px;
   color: #c9c9c9;
   font-size: 20.83px;
   font-family: "Microsoft YaHei";
-  color: #c9c9c9; }
+  color: #c9c9c9;
+  line-height: 40px; }
 
 .second_notice {
+  line-height: 40px;
   font-size: 25px; }
 
 .second_notice_time {
@@ -460,6 +486,80 @@ button {
   color: #f5f5f5;
   display: block;
   cursor: pointer; }
+
+.banner {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative; }
+  .banner img {
+    height: 100%; }
+  .banner .banner_img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden; }
+  .banner .current {
+    visibility: visible; }
+  .banner .switch_bt {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translate(-28px);
+    font-size: 0; }
+  .banner .dot {
+    width: 11px;
+    height: 11px;
+    display: inline-block;
+    border: 1px solid #84a9e0;
+    border-radius: 50%;
+    margin-right: 10px; }
+    .banner .dot:hover {
+      background: #84a9e0; }
+  .banner .current_dot {
+    background: #84a9e0; }
+  .banner .dot:last-child {
+    margin-right: 0; }
+
+.rtl_prev {
+  -webkit-animation: r_t_l_next .6s ease both;
+  -moz-animation: r_t_l_next .6s ease both;
+  animation: r_t_l_next .6s ease both; }
+
+.rtl_next {
+  -webkit-animation: r_t_l_prev .6s ease both;
+  -moz-animation: r_t_l_prev .6s ease both;
+  animation: r_t_l_prev .6s ease both; }
+
+.ltr_prev {
+  -webkit-animation: l_t_r_next .6s ease both;
+  -moz-animation: l_t_r_next .6s ease both;
+  animation: l_t_r_next .6s ease both; }
+
+.ltr_next {
+  -webkit-animation: l_t_r_prev .6s ease both;
+  -moz-animation: l_t_r_prev .6s ease both;
+  animation: l_t_r_prev .6s ease both; }
+
+@keyframes l_t_r_prev {
+  to {
+    transform: translateX(100%); } }
+
+@keyframes l_t_r_next {
+  from {
+    transform: translateX(-100%); } }
+
+@keyframes r_t_l_prev {
+  to {
+    transform: translateX(-100%); } }
+
+@keyframes r_t_l_next {
+  from {
+    transform: translateX(100%); } }
 
 .upload-main {
   width: 820px;

@@ -11,13 +11,12 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 .second_head{
 	display: block;
 	margin-top: 50px;
-	height: 50px;
 	border-bottom: 1px solid $underlineb-bc;
 	}
 .second_content{
 	display: block;
 	margin-top: 30px;
-	margin-bottom: 50px;	
+	margin-bottom: 50px;
 	text-align: left;
 	line-height: 50px;
 	font-size:nth($font-size,4);
@@ -35,16 +34,19 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	font-family: "SimSun" 宋体;
 	font-size:nth($font-size,1);
 	color: nth($font-color,3);
+	line-height: 50px;
 }
 .second_head_author{	
 	margin-left: 10px;
-    font-size: 25px;
+    // font-size: 25px;
     color: $underlineb-bc;
     font-size:nth($font-size,4);
     font-family: "Microsoft YaHei";
     color: nth($font-color,2);
+    line-height: 40px;
 	}
 .second_notice{
+	line-height: 40px;
 	font-size: nth($font-size,2);
 }
 .second_notice_time{
@@ -137,3 +139,93 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	cursor: pointer;
 }
 
+.banner{
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+	img {
+		height: 100%;
+	}
+	.banner_img {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		visibility: hidden;
+	}
+	.current {
+	    visibility: visible;
+	}
+	.switch_bt {
+		position: absolute;
+		bottom: 26px;
+		left: 50%;
+		transform:translate(-28px);
+		font-size: 0;
+	}
+	.dot {
+		width: 11px;
+		height: 11px;
+		display: inline-block;
+		border: 1px solid rgb(132, 169, 224);
+		border-radius: 50%;
+		margin-right: 10px;
+		&:hover {
+			background:rgb(132, 169, 224);
+		}
+	}
+	.current_dot {
+		background:rgb(132, 169, 224);
+	}
+	.dot:last-child {
+		margin-right: 0;
+	}
+}
+.rtl_prev  {
+	-webkit-animation: r_t_l_next .6s ease both;
+	-moz-animation: r_t_l_next .6s ease both;
+	animation: r_t_l_next .6s ease both;
+}
+
+.rtl_next {
+	-webkit-animation: r_t_l_prev .6s ease both;
+	-moz-animation: r_t_l_prev .6s ease both;
+	animation: r_t_l_prev .6s ease both;
+}
+.ltr_prev  {
+	-webkit-animation: l_t_r_next .6s ease both;
+	-moz-animation: l_t_r_next .6s ease both;
+	animation: l_t_r_next .6s ease both;
+}
+.ltr_next {
+	-webkit-animation: l_t_r_prev .6s ease both;
+	-moz-animation: l_t_r_prev .6s ease both;
+	animation: l_t_r_prev .6s ease both;
+}
+@keyframes l_t_r_prev {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes l_t_r_next {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes r_t_l_prev {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes r_t_l_next {
+  from {
+    transform: translateX(100%);
+  }
+}
