@@ -199,7 +199,16 @@ class Notice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(164))
     body = db.Column(db.Text)
-    a_time = db.Column(db.Text) 
+    a_time = db.Column(db.Text)
+
+    @staticmethod
+    def on_changed_body(target, value, oldbalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, strip=True))
 
     def __repr__(self):
         return "<Notice %r>" % self.id

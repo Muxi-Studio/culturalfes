@@ -6,6 +6,6 @@
 			<span class="second_head_title second_notice">{{ notice.name }}</span>
 			<span class="second_head_author second_notice_time">{{ notice.a_time }}</span>
 		</div>
-		<div class="second_content"><p>{{ notice.body }}</p></div>
+		<div class="second_content"><p>{{ notice.body | safe }}</p></div>
 	</div>
 	{% endblock %}
