@@ -6,7 +6,19 @@
 			<span class="second_head_title">{{ photo.present_name }}</span>
 			<span class="second_head_author">{{ photo.a_time }}/{{ photo.author_name }}</span>
 		</div>
-        <div class="second_content second_media">{% for eachPhoto in photo_urls %}<img src="{{ eachPhoto }}">{% endfor %}</div>
+        <div class="second_content second_media">
+        <div class="banner">
+        	{% for eachPhoto in photo_urls %}
+        	<div class="banner_img">
+        		<img src="{{ eachPhoto }}">
+        	</div>
+        	{% endfor %}
+        	<div class="switch_bt">
+	        	{% for eachPhoto in photo_urls %}
+	        	<div class="dot"></div>
+	        	{% endfor %}
+        	</div>
+        </div>
 	    <!-- 多说评论框 start -->
 	    <div class="ds-thread" data-thread-key="p{{ photo.id }}" data-title="{{ photo.present_name }}" data-url="{{ url_for('main.get_photo', id=photo.id) }}"></div>
 	    <!-- 多说评论框 end -->
@@ -69,6 +81,9 @@
 		<button class="second_vote_bt" id="vote_btn">投票</button>
 	</div>
 	<script src="../../../static/js/second.js"></script>
+	<script src="../../../static/js/jquery.js"></script>
+	<script src="../../../static/js/modernizr.custom.js"></script>
+	<script src="../../../static/js/banner.js"></script>
 	{% endblock %}
 	{% block flash_message %}
 		{% with messages = get_flashed_messages() %}
