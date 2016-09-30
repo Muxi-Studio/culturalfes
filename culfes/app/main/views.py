@@ -26,6 +26,8 @@ def index():
     courses = Course.query.all()
     animes = Anime.query.all()
     photos = Photo.query.all()
+    for eachPhoto in photos:
+        eachPhoto.first_photo = eachPhoto.upload_url.split(' ')[0]
     articles = Article.query.all()
     notices = Notice.query.all()
     return render_template('/main/index.html', movies=movies[:3], courses=courses[:3],
@@ -171,6 +173,8 @@ def courses():
 @main.route('/photos/')
 def photos():
     photos = Photo.query.all()
+    for eachPhoto in photos:
+        eachPhoto.first_photo = eachPhoto.upload_url.split(' ')[0]
     return render_template('main/photos.html', photos=photos)
 
 

@@ -8,7 +8,7 @@
 		<div class="index_tu_box">
 			{% for photo in photos %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.upload_url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.first_photo }}"></a></div>
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.present_name }}</a>
