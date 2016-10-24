@@ -1,7 +1,8 @@
 # coding: utf-8
 from .. import app
 from . import main
-from ..models import Movie, Article, Photo, Anime, Course, W_Movie, W_Article, W_Photo, W_Anime, W_Course, Notice
+from ..models import Movie, Article, Photo, Anime, Course, Startup, Notice
+from ..models import W_Movie, W_Article, W_Photo, W_Anime, W_Course, W_Startup
 from app import db, r1, r2, r3, r4, r5
 from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
 from geetest import GeetestLib
@@ -26,12 +27,21 @@ def index():
     courses = Course.query.all()
     animes = Anime.query.all()
     photos = Photo.query.all()
+    startups = Startup.query.all()
     for eachPhoto in photos:
         eachPhoto.first_photo = eachPhoto.upload_url.split(' ')[0]
     articles = Article.query.all()
     notices = Notice.query.all()
-    return render_template('/main/index.html', movies=movies[:3], courses=courses[:3],
-            animes=animes[:3], photos=photos[:3], articles=articles[:3], notices=notices[:3])
+    return render_template(
+            '/main/index.html',
+            movies=movies[:3],
+            courses=courses[:3],
+            animes=animes[:3],
+            photos=photos[:3],
+            articles=articles[:3],
+            notices=notices[:3],
+            startups=startups[:3]
+            )
 
 
 @main.route('/upload/', methods=['GET', 'POST'])
@@ -138,6 +148,20 @@ def upload_file():
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
+        elif tag == 'startup':
+            if not upload_url:
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'startup')
+                file.save(os.path.join(UPLOAD_FOLDER, filename))
+            else:
+                UPLOAD_FOLDER = 'no'
+            item = W_Course(
+                    upload_name=filename,
+                    present_name=file_name,
+                    author_name=author_name,
+                    upload_url=UPLOAD_FOLDER + filename,
+                    video_url=upload_url,
+                    a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
+                    )
 
         db.session.add(item)
         db.session.commit()
@@ -184,6 +208,12 @@ def articles():
     return render_template('main/articles.html', articles=articles)
 
 
+@main.route('/startups/')
+def startups():
+    startups = Startup.query.all()
+    return render_template('main/startups.html', startups=startups)
+
+
 @main.route('/rank/')
 def rank():
     movies = Movie.query.all()
@@ -191,11 +221,13 @@ def rank():
     animes = Anime.query.all()
     photos = Photo.query.all()
     courses = Course.query.all()
+    startups = Startup.query.all()
     sorted_movies = sorted(movies, key=lambda movie: movie.liked_count, reverse=True)
     sorted_animes = sorted(animes, key=lambda anime: anime.liked_count, reverse=True)
     sorted_articles = sorted(articles, key=lambda article: article.liked_count, reverse=True)
     sorted_photos = sorted(photos, key=lambda photo: photo.liked_count, reverse=True)
     sorted_courses = sorted(courses, key=lambda course: course.liked_count, reverse=True)
+    sorted_startups = sorted(startups, key=lambda startup: startup.liked_count, reverse=True)
     return render_template(
             'main/rank.html',
             movies=sorted_movies[:20],
@@ -310,6 +342,27 @@ def get_photo(id):
     else:
         session['vote'] = 0
     return render_template('main/photo.html', photo=photo, photo_urls=photo_urls)
+
+
+@main.route('/startup/<int:id>/', methods=["GET", "POST"])
+def get_startup(id):
+    startup = Startup.query.get_or_404(id)
+    if 'vote' in session.keys():
+        if session['vote'] == 1:
+            ip = request.remote_addr
+            if r5.get(ip):
+                flash("每天只能投一次票!")
+            else:
+                startup.liked_count += 1
+                db.session.add(startup)
+                db.session.commit()
+                flash("投票成功")
+                r5.set(ip, ip)
+            session['vote'] = 0
+            return redirect(url_for('main.get_startup', id=startup.id))
+    else:
+        session['vote'] = 0
+    return render_template('main/startup.html', startup=startup)
 
 
 @main.route('/notice/<int:id>/')

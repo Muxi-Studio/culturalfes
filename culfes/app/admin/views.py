@@ -57,6 +57,12 @@ admin.add_view(ModelView(Photo, db.session))
 from app.models import Article
 admin.add_view(ModelView(Article, db.session))
 
+from app.models import Startup
+admin.add_view(ModelView(Startup, db.session))
+
+from app.models import W_Startup
+admin.add_view(ModelView(W_Startup, db.session))
+
 from app.models import W_Movie
 admin.add_view(ModelView(W_Movie, db.session))
 

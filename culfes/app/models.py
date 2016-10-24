@@ -192,6 +192,18 @@ class Photo(db.Model, Base):
 db.event.listen(Photo.body, 'set', Photo.on_changed_body)
 
 
+class Startup(db.Model, Base):
+    """startups"""
+    __tablename__ = 'startups'
+    tag = 'startup'
+
+    def __repr__(self):
+        return "<Startup %r>" % self.id
+
+
+db.event.listen(Startup.body, 'set', Startup.on_changed_body)
+
+
 class Notice(db.Model):
     """notices"""
     __tablename__ = 'notice'
@@ -270,5 +282,16 @@ class W_Photo(db.Model, Base):
     def __repr__(self):
         return "<W_Photo %r>" % self.id
 
-
 db.event.listen(W_Photo.body, 'set', W_Photo.on_changed_body)
+
+
+class W_Startup(db.Model, Base):
+    """w_startups"""
+    __tablename__ = 'w_startups'
+    tag = 'w_startup'
+
+    def __repr__(self):
+        return "<W_Startup %r>" % self.id
+
+
+db.event.listen(W_Startup.body, 'set', W_Startup.on_changed_body)
