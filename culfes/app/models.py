@@ -116,6 +116,7 @@ class Base(object):
     present_name = db.Column(db.Text)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
+    description = db.Column(db.Text)
     video_url = db.Column(db.Text)
     upload_url = db.Column(db.Text)
     a_time = db.Column(db.Text)

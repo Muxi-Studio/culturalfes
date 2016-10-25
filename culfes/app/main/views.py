@@ -49,6 +49,7 @@ def upload_file():
     if request.method == 'POST':
         tag = request.form.get('upload-class-choice')
         file_name = request.form.get('file_name')
+        description = request.form.get('description') or ''
 
         if not tag:
             flash("请选择类型!")
@@ -86,6 +87,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
+                    description=desctiption,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -101,6 +103,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
+                    description=desctiption,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -116,6 +119,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
+                    description=desctiption,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -130,6 +134,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
+                    description=desctiption,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -144,6 +149,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
+                    description=desctiption,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -158,6 +164,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
+                    description=desctiption,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
