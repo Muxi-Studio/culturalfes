@@ -16,8 +16,10 @@ label{
 	vertical-align: middle;
 	line-height: $upload-height;
 }
-.upload_label{letter-spacing: 15px;}
-
+.upload_label{
+	vertical-align: top;
+	letter-spacing: 15px;
+}
 .upload-author,.upload-title,.upload-class,.upload-addfile{
 	margin-bottom: 35px;
 }
@@ -36,6 +38,8 @@ label{
 }
 .upload-class-second-spe{
 	display: inline-block;
+	margin-bottom: 10px;
+	vertical-align: bottom;
 }
 .upload-class-choice{
 	margin-left: 35px;
@@ -58,6 +62,7 @@ label{
 	left:50%;
 	margin-left: -95px;
 	color:#ffffff;
+	margin-bottom: 50px;
 }
 .flashes{
 	position: absolute;
@@ -80,5 +85,14 @@ label{
 	margin-bottom: 30px;
 	letter-spacing: 10px;
 }
+.textarea-form{
+	padding: 10px;
+	width: 700px;
+	height: 100px;
+}
+.choice-margin{
+	margin-left: 50px;
+}
+
 
 

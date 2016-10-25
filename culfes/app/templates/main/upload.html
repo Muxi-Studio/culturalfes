@@ -1,15 +1,6 @@
 	{%extends 'main/base.html' %}
     {% block title %}上传文件{% endblock %}
 	{% block page_content %}
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul class=flashes>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    {% endwith %}
 	<div class="upload-main">
 		<form action="" method="post" enctype="multipart/form-data">
 			<div class="upload-author">
@@ -28,22 +19,40 @@
 				</div>
 				<div class="upload-class-second">
 					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="anime">      动漫  
-					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="photo">      摄影 
+					<input name="upload-class-choice" class="upload-class-choice choice-margin" type="radio" value="photo">      摄影 
 				</div>
 				<div class="upload-class-second">
 					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="course">      微课程 
+					<input name="upload-class-choice" class="upload-class-choice" type="radio" value="startup">      网络创新创业 
 				</div>
-			</div> 
+			</div>
+			<div class="upload-title">
+				<label class="upload_label">描    述</label>
+				<textarea name="description" class="upload-title-form textarea-form"></textarea>
+			</div>
 			<div class="upload-addfile">
 				<label class="uploadfile">添 加 附 件(zip/rar） （不超过5M)</label>
 				<input type="file" name="file" class="upload-file-form">
 			</div>
             <div class="upload-addfile">
-                <label class="uploadfile">视 频 链 接</label>
+                <label class="uploadfile">视 频 链 接 (大于5M的视频)</label>
                 <input class="upload-file-form" name="upload_url">
             </div>
 			<button type="submit" class="upload-submite">提交</button>
 		</form>
 	</div>
 	<script src="../../static/js/upload.js"></script>
+	{% endblock %}
+
+	{% block flash_message %}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<div class="submite_flash" id="submit_flash">
+			{% for message in messages %}
+			<div class="submite_message">{{ message }}</div>
+			{% endfor %}
+			<div class="submit_close" id="submit_close">x</div>
+		</div>
+		{% endif %}
+		{% endwith %}
 	{% endblock %}

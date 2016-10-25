@@ -1,30 +1,31 @@
 {% extends 'main/base.html' %}
-{% block title %}{{ movie.present_name }}-{{ movie.author_name }}{% endblock %}
+{% block title %}{{ startup.present_name }}-{{ startup.author_name }}{% endblock %}
 	{% block page_content %}
 	<div class="second_box">
 		<div class="second_head">
-			<span class="second_head_title">{{ movie.present_name }}</span>
-			<span class="second_head_author">{{ movie.a_time }}/{{ movie.author_name }}</span>
+			<span class="second_head_title">{{ startup.present_name }}</span>
+			<span class="second_head_author">{{ startup.a_time }}/{{ startup.author_name }}</span>
 		</div>
-		<p class="second_description">{{ movie.description }}</p>
-        <div class="second_content second_media"><video src="{{ movie.video_url }}" controls="control"></video></div>
+		<p class="second_description">{{ startup.description }}</p>
+        <div class="second_content second_media"><img src="{{ startup.video_url }}"></div>
+        <a href="{{ startup.upload_url }}" class="second_download">点击下载</a>
 	    <!-- 多说评论框 start -->
-	    <div class="ds-thread" data-thread-key="m{{ movie.id }}" data-title="{{ movie.present_name }}" data-url="{{ url_for('main.get_movie', id=movie.id) }}"></div>
+	    <div class="ds-thread" data-thread-key="p{{ startup.id }}" data-title="{{ startup.present_name }}" data-url="{{ url_for('main.get_startup', id=startup.id) }}"></div>
 	    <!-- 多说评论框 end -->
-	    <!-- 多说公共JS代码 start  -->
+	    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	    <script type="text/javascript">
 	    var duoshuoQuery = {short_name:"wenhuajie"};
-		    (function() {
-			    var ds = document.createElement('script');
-		    	ds.type = 'text/javascript';ds.async = true;
-	    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		    	ds.charset = 'UTF-8';
-			    (document.getElementsByTagName('head')[0] 
-	    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-		    })();
-	    	</script>
+	        (function() {
+	            var ds = document.createElement('script');
+	            ds.type = 'text/javascript';ds.async = true;
+	            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	            ds.charset = 'UTF-8';
+	            (document.getElementsByTagName('head')[0] 
+	             || document.getElementsByTagName('body')[0]).appendChild(ds);
+	        })();
+	        </script>
 	    <!-- 多说公共JS代码 end -->
-    </div>
+	</div>
 	{% endblock %}
 	{% block captcha %}
 	<div class="c_container" id="captcha_container">
@@ -69,7 +70,6 @@
 	<div class="second_vote">
 		<button class="second_vote_bt" id="vote_btn">投票</button>
 	</div>
-	<script src="../../../static/js/second.js"></script>
 	{% endblock %}
 	{% block flash_message %}
 		{% with messages = get_flashed_messages() %}
@@ -83,3 +83,4 @@
 		{% endif %}
 		{% endwith %}
 	{% endblock %}
+

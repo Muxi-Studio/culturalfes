@@ -1,6 +1,6 @@
 $d_green:#207479;
 $s_green:#33c157;
-$tag_width:83px;
+$tag_width:100px;
 $tag_height:47px;
 $index_padding_h:10%;
 $index_padding_t:25px;
@@ -54,6 +54,9 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	font-size:nth($font-size,2);
 	text-align: center;
 	line-height: $tag_height;
+}
+.longtag{
+	width: 150px;
 }
 .tag1{
 	background-color: $s_green;

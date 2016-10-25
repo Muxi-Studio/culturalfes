@@ -68,13 +68,16 @@ button {
       width: 100%; } }
 
 .index_tag {
-  width: 83px;
+  width: 100px;
   height: 47px;
   color: #f5f5f5;
   display: inline-block;
   font-size: 20.83px;
   text-align: center;
   line-height: 47px; }
+
+.longtag {
+  width: 150px; }
 
 .tag1 {
   background-color: #33c157; }
@@ -308,7 +311,7 @@ button {
   margin: 40px auto 0px; }
 
 .rank-movie-head, .rank-text-head, .rank-photo-head, .rank-catoon-head, .rank-course-head {
-  width: 190px;
+  width: 150px;
   height: 50px;
   box-shadow: 2px 2px 2px #cecece;
   text-align: center;
@@ -329,14 +332,14 @@ button {
   margin-top: 10px;
   margin-bottom: 20px; }
   .rank-movie-rank .rank_content, .rank-text-rank .rank_content, .rank-photo-rank .rank_content, .rank-catoon-rank .rank_content, .rank-course-rank .rank_content {
-    width: 200px;
+    width: 150px;
     height: 30px;
     margin-left: 20px; }
   .rank-movie-rank .rank_content_title, .rank-text-rank .rank_content_title, .rank-photo-rank .rank_content_title, .rank-catoon-rank .rank_content_title, .rank-course-rank .rank_content_title {
     display: inline-block;
     height: 30px;
     line-height: 30px;
-    width: 150px;
+    width: 120px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
@@ -347,7 +350,7 @@ button {
     color: #626262; }
   .rank-movie-rank .rank_content_liked, .rank-text-rank .rank_content_liked, .rank-photo-rank .rank_content_liked, .rank-catoon-rank .rank_content_liked, .rank-course-rank .rank_content_liked {
     display: inline-block;
-    width: 30px;
+    width: 25px;
     text-align: right; }
   .rank-movie-rank span, .rank-text-rank span, .rank-photo-rank span, .rank-catoon-rank span, .rank-course-rank span {
     font-size: 12.92px;
@@ -357,6 +360,9 @@ button {
 
 .rank-movie-rank {
   border: none; }
+
+.long-head {
+  font-size: 22px; }
 
 .second_box {
   width: 100%;
@@ -487,16 +493,33 @@ button {
   display: block;
   cursor: pointer; }
 
+.second_download {
+  margin: 0 auto;
+  display: block;
+  background-color: #207479;
+  color: #ffffff;
+  line-height: 50px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px; }
+
+.second_description {
+  margin: 20px 50px;
+  line-height: 30px;
+  font-style: italic;
+  text-indent: 50px; }
+
 .banner {
   width: 100%;
-  height: 400px;
+  height: 500px;
   overflow: hidden;
   position: relative; }
   .banner img {
     height: 100%; }
   .banner .banner_img {
     width: 100%;
-    height: 100%;
+    height: 450px;
     position: absolute;
     left: 0;
     top: 0;
@@ -506,10 +529,9 @@ button {
   .banner .current {
     visibility: visible; }
   .banner .switch_bt {
-    position: absolute;
-    bottom: 26px;
+    margin-top: 450px;
     left: 50%;
-    transform: translate(-28px);
+    transform: translate(-11px);
     font-size: 0; }
   .banner .dot {
     width: 11px;
@@ -576,6 +598,7 @@ label {
   line-height: 35px; }
 
 .upload_label {
+  vertical-align: top;
   letter-spacing: 15px; }
 
 .upload-author, .upload-title, .upload-class, .upload-addfile {
@@ -595,7 +618,9 @@ label {
   line-height: 35px; }
 
 .upload-class-second-spe {
-  display: inline-block; }
+  display: inline-block;
+  margin-bottom: 10px;
+  vertical-align: bottom; }
 
 .upload-class-choice {
   margin-left: 35px; }
@@ -617,7 +642,8 @@ label {
   font-size: 25px;
   left: 50%;
   margin-left: -95px;
-  color: #ffffff; }
+  color: #ffffff;
+  margin-bottom: 50px; }
 
 .flashes {
   position: absolute;
@@ -639,3 +665,11 @@ label {
   margin-left: 150px;
   margin-bottom: 30px;
   letter-spacing: 10px; }
+
+.textarea-form {
+  padding: 10px;
+  width: 700px;
+  height: 100px; }
+
+.choice-margin {
+  margin-left: 50px; }

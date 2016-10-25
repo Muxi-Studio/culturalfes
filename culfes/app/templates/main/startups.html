@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% block title %}网络创新创业{% endblock %}
+{% block page_content %}
+	<div class="index_tu index_morecontent">
+		<div class="index_title">
+			<div class="index_tag tag1 longtag">网络创新创业</div>
+		</div>
+		<div class="index_tu_box">
+			{% for startup in startups %}
+			<div class="index_tu_content">
+				<div class="index_tu_img"><a href="{{ url_for('main.get_startup', id=startup.id) }}"><img src="{{ startup.video_url }}"></a></div>
+				<div class="index_tu_info_box">
+					<div class="index_tu_info">
+						<div class="index_tu_title_name"><a href="{{ url_for('main.get_startup', id=startup.id) }}">{{ startup.present_name }}</a>
+						</div>
+						<div class="index_tu_time_name">
+							<span>{{ startup.a_time }}</span>
+							<span>{{ startup.author_name }}</span>
+						</div>
+					</div>
+					<div class="index_tu_like">
+						<img src="../../static/img/heart.png">
+						<div class="index_liked_count"><a>{{ startup.liked_count }}</a></div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="index_tu_content index_blank"></div>
+			<div class="index_tu_content index_blank"></div>
+		</div>
+	</div>
+{% endblock %}

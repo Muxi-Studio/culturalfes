@@ -6,6 +6,7 @@
 			<span class="second_head_title">{{ anime.present_name }}</span>
 			<span class="second_head_author">{{ anime.a_time }}/{{ anime.author_name }}</span>
 		</div>
+		<p class="second_description">{{ anime.description }}</p>
         <div class="second_content second_media"><video src="{{ anime.video_url }}" controls="control"></video></div>
         	<!-- 多说评论框 start -->
 		<div class="ds-thread" data-thread-key="a{{ anime.id }}" data-title="{{ anime.present_name }}" data-url="{{ url_for('main.get_anime', id=anime.id) }}"></div>

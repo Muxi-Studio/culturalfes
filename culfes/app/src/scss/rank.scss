@@ -1,4 +1,4 @@
-$rank-width:190px;
+$rank-width:150px;
 $rank-height:50px;
 $font-color:#383838 #c9c9c9 #626262;
 $font-size: 27.08px 16.67px 12.92px;
@@ -30,7 +30,7 @@ $font-size: 27.08px 16.67px 12.92px;
 	margin-top: 10px;
 	margin-bottom: 20px;
 	.rank_content{
-		width: 200px;
+		width: $rank-width;
 		height: 30px;
 		margin-left: 20px;
 	}
@@ -38,7 +38,7 @@ $font-size: 27.08px 16.67px 12.92px;
 		display: inline-block;
 		height: 30px;
 		line-height: 30px;
-		width: 150px;
+		width: $rank-width - 30px;
 		text-overflow:ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
@@ -51,7 +51,7 @@ $font-size: 27.08px 16.67px 12.92px;
 	}
 	.rank_content_liked{
 		display: inline-block;
-		width: 30px;
+		width: 25px;
 		text-align: right;
 	}
 	span{
@@ -63,4 +63,7 @@ $font-size: 27.08px 16.67px 12.92px;
 }
 .rank-movie-rank{
 	border: none;
+}
+.long-head{
+	font-size: 22px;
 }

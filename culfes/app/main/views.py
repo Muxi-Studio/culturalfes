@@ -87,7 +87,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
-                    description=desctiption,
+                    description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -119,7 +119,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
-                    description=desctiption,
+                    description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -160,7 +160,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Course(
+            item = W_Startup(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
@@ -241,7 +241,8 @@ def rank():
             animes=sorted_animes[:20],
             photos=sorted_photos[:20],
             articles=sorted_articles[:20],
-            courses=sorted_courses[:20]
+            courses=sorted_courses[:20],
+            startups=sorted_startups[:20]
             )
 
 

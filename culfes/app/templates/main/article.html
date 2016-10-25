@@ -6,7 +6,7 @@
 			<span class="second_head_title">{{ article.present_name }}</span>
 			<span class="second_head_author">{{ article.a_time }}/{{ article.author_name }}</span>
 		</div>
-	    <div class="second_content">{{ article.body_html|safe }}</div>
+	    <div class="second_content second_article">{{ article.body_html|safe }}</div>
 	    <!-- 多说评论框 start -->
 	    <div class="ds-thread" data-thread-key="r{{ article.id }}" data-title="{{ article.present_name }}" data-url="{{ url_for('main.get_article', id=article.id) }}"></div>
 	    <!-- 多说评论框 end -->
