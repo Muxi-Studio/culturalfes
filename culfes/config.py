@@ -31,7 +31,7 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'rar']
+    ALLOWED_EXTENSIONS = ['zip', 'rar']
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
     BUPLOAD_FOLDER = os.environ.get('BUPLOAD_FOLDER')
     REDIS_URL = "redis://:password@localhost:6379/0"
