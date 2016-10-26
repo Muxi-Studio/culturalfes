@@ -30,7 +30,7 @@ def index():
     photos = Photo.query.all()
     startups = Startup.query.all()
     for eachPhoto in photos:
-        eachPhoto.first_photo = eachPhoto.upload_url.split(' ')[0]
+        eachPhoto.first_photo = eachPhoto.video_url.split(' ')[0]
     articles = Article.query.all()
     notices = Notice.query.all()
     return render_template(
@@ -292,13 +292,13 @@ def get_article(id):
 @main.route('/anime/<int:id>/', methods=["GET", "POST"])
 def get_anime(id):
     anime = Anime.query.get_or_404(id)
-    anime_urls = photo.upload_url.split(' ')
+    anime_urls = anime.video_url.split(' ')
 
     # 根据文件后缀判断是图片还是视频
-    if anime_urls.split('.')[-1] in pic_appendix:
-        flag = 0
+    if anime_urls[0].split('.')[-1] in pic_appendix or len(anime_urls[0].split('.')[-1]) > 5:
+        flag = 'anime'
     else:
-        flag = 1
+        flag = 'video'
 
     if 'vote' in session.keys():
         if session['vote'] == 1:
@@ -342,7 +342,7 @@ def get_course(id):
 @main.route('/photo/<int:id>/', methods=["GET", "POST"])
 def get_photo(id):
     photo = Photo.query.get_or_404(id)
-    photo_urls = photo.upload_url.split(' ')
+    photo_urls = photo.video_url.split(' ')
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr

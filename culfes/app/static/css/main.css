@@ -384,6 +384,9 @@ button {
   font-family: "Microsoft YaHei";
   color: #626262; }
 
+.second_content p {
+  text-indent: 40px; }
+
 .second_media {
   text-align: center; }
   .second_media video {

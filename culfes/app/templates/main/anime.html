@@ -7,7 +7,24 @@
 			<span class="second_head_author">{{ anime.a_time }}/{{ anime.author_name }}</span>
 		</div>
 		<p class="second_description">{{ anime.description }}</p>
-        <div class="second_content second_media"><video src="{{ anime.video_url }}" controls="control"></video></div>
+		<div class="second_content second_media">
+		{% if flag=='video' %}
+        <video src="{{ anime.video_url }}" controls="control"></video>
+        {% elif flag=='anime' %}
+        <div class="banner">
+        	{% for eachAnime in anime_urls %}
+        	<div class="banner_img">
+        		<img src="{{ eachAnime }}">
+        	</div>
+        	{% endfor %}
+        	<div class="switch_bt">
+	        	{% for eachAnime in anime_urls %}
+	        	<div class="dot"></div>
+	        	{% endfor %}
+        	</div>
+        </div>
+        {% endif %}
+        </div>
         	<!-- 多说评论框 start -->
 		<div class="ds-thread" data-thread-key="a{{ anime.id }}" data-title="{{ anime.present_name }}" data-url="{{ url_for('main.get_anime', id=anime.id) }}"></div>
 		    <!-- 多说评论框 end -->
@@ -70,6 +87,9 @@
 		<button class="second_vote_bt" id="vote_btn">投票</button>
 	</div>
 	<script src="../../../static/js/second.js"></script>
+		<script src="../../../static/js/jquery.js"></script>
+	<script src="../../../static/js/modernizr.custom.js"></script>
+	<script src="../../../static/js/banner.js"></script>
 	{% endblock %}
 	{% block flash_message %}
 		{% with messages = get_flashed_messages() %}

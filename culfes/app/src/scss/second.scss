@@ -22,6 +22,10 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 	font-size:nth($font-size,4);
 	font-family: "Microsoft YaHei";
 	color: nth($font-color,3);
+
+}
+.second_content p{
+	text-indent: 40px;
 }
 .second_media{
 	text-align: center;
