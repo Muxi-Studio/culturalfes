@@ -30,6 +30,7 @@ r2 = redis.StrictRedis(host='localhost', port=6380, db=0)
 r3 = redis.StrictRedis(host='localhost', port=6381, db=0)
 r4 = redis.StrictRedis(host='localhost', port=6382, db=0)
 r5 = redis.StrictRedis(host='localhost', port=6383, db=0)
+r6 = redis.StrictRedis(host='localhost', port=6384, db=0)
 
 
 db = SQLAlchemy(app)

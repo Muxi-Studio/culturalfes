@@ -37,6 +37,7 @@ class Config:
     REDIS_URL = "redis://:password@localhost:6379/0"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
     PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
+    PIC_APPENDIX = ['png', 'jpg', 'jpeg', 'bmp', 'gif']
 
     @staticmethod
     def init_app(app):

@@ -3,7 +3,7 @@ from .. import app
 from . import main
 from ..models import Movie, Article, Photo, Anime, Course, Startup, Notice
 from ..models import W_Movie, W_Article, W_Photo, W_Anime, W_Course, W_Startup
-from app import db, r1, r2, r3, r4, r5
+from app import db, r1, r2, r3, r4, r5, r6
 from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
 from geetest import GeetestLib
 from werkzeug import secure_filename
@@ -14,6 +14,7 @@ import random
 
 captcha_id = app.config['CAPTCHA_ID']
 private_key = app.config['PRIVATE_KEY']
+pic_appendix = app.config['PIC_APPENDIX']
 
 
 def allowed_file(filename):
@@ -291,6 +292,14 @@ def get_article(id):
 @main.route('/anime/<int:id>/', methods=["GET", "POST"])
 def get_anime(id):
     anime = Anime.query.get_or_404(id)
+    anime_urls = photo.upload_url.split(' ')
+
+    # 根据文件后缀判断是图片还是视频
+    if anime_urls.split('.')[-1] in pic_appendix:
+        flag = 0
+    else:
+        flag = 1
+
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -306,7 +315,7 @@ def get_anime(id):
             return redirect(url_for('main.get_anime', id=anime.id))
     else:
         session['vote'] = 0
-    return render_template('main/anime.html', anime=anime)
+    return render_template('main/anime.html', anime=anime, flag=flag, anime_urls=anime_urls)
 
 
 @main.route('/course/<int:id>/', methods=["GET", "POST"])
@@ -358,7 +367,7 @@ def get_startup(id):
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
-            if r5.get(ip):
+            if r6.get(ip):
                 flash("每天只能投一次票!")
             else:
                 startup.liked_count += 1
