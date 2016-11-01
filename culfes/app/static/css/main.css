@@ -49,23 +49,12 @@ button {
 .first_page:hover, .upload:hover, .rank:hover {
   background-color: #33c157; }
 
-@media screen and (min-width: 1096px) {
-  .index_banner {
-    display: block;
-    width: 100%;
-    height: 425px;
-    background: url("http://7xrvvt.com1.z0.glb.clouddn.com/banner1.jpg") no-repeat;
-    background-size: 100%; }
-    .index_banner .index_banner_img {
-      display: none; } }
-
-@media screen and (max-width: 1096px) {
-  .index_banner {
-    display: block;
-    width: 100%;
-    height: auto; }
-    .index_banner .index_banner_img img {
-      width: 100%; } }
+.index_banner {
+  display: block;
+  width: 100%;
+  height: auto; }
+  .index_banner img {
+    width: 100%; }
 
 .index_tag {
   width: 100px;

@@ -18,33 +18,14 @@ $font-color:#f5f5f5 #c9c9c9 #626262;
 .first_page:hover,.upload:hover,.rank:hover{
 	background-color: $s_green;
 }
-@media screen and (min-width: 1096px) {
-	.index_banner{
-		display: block;
+.index_banner{
+	display: block;
+	width: 100%;
+	height: auto;
+	img{
 		width: 100%;
-		height: auto;
-		background:url("/static/img/banner1.jpg") no-repeat;
-		background-size: 100%;
-		.index_banner_img{
-			display: none;
-		}
 	}
 }
-@media screen and (max-width: 1096px) {
-	.index_banner{
-		display: block;
-		width: 100%;
-		height: auto;
-		.index_banner_img{
-			img{
-				width: 100%;
-			}
-		}
-	}
-}
-
-
-
 
 .index_tag{
 	width: $tag_width;

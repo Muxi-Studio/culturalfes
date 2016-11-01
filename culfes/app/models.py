@@ -211,6 +211,7 @@ class Notice(db.Model):
     tag = 'notice'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(164))
+    appendix = db.Column(db.String(164))
     body = db.Column(db.Text)
     a_time = db.Column(db.Text)
 

@@ -10,3 +10,8 @@
 		<div class="second_content">{{ notice.body | safe }}</div>
 	</div>
 	{% endblock %}
+	{% block vote_button %}
+	<div class="second_vote">
+		<a href="{{ notice.appendix }}" class="second_download" style="margin-top:15px;">下载附件</a>
+	</div>
+	{% endblock %}
