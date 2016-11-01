@@ -53,8 +53,8 @@ button {
   .index_banner {
     display: block;
     width: 100%;
-    height: auto;
-    background: url("/static/img/banner1.jpg") no-repeat;
+    height: 425px;
+    background: url("http://7xrvvt.com1.z0.glb.clouddn.com/banner1.jpg") no-repeat;
     background-size: 100%; }
     .index_banner .index_banner_img {
       display: none; } }
