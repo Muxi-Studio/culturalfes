@@ -6,7 +6,7 @@
 			<span class="second_head_title">{{ startup.present_name }}</span>
 			<span class="second_head_author">{{ startup.a_time }}/{{ startup.author_name }}</span>
 		</div>
-		<p class="second_description">{{ startup.description }}</p>
+		<p class="second_description">{{ startup.body_html|safe }}</p>
         <div class="second_content second_media"><img src="{{ startup.video_url }}"></div>
         <a href="{{ startup.upload_url }}" class="second_download">点击下载</a>
 	    <!-- 多说评论框 start -->
