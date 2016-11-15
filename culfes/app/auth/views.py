@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import os
 from . import auth
 from flask import render_template, url_for, redirect, flash
 from flask_login import login_user, logout_user, current_user, login_required
@@ -24,3 +25,8 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
+
+@auth.route('/redis/')
+def redis_restart():
+    os.system('sh /xgb/culturalfes/culfes/redis/redis_restart.sh')
+    return 'Redis Restarted!'
