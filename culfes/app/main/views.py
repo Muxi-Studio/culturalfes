@@ -374,7 +374,7 @@ def get_startup(id):
                 db.session.add(startup)
                 db.session.commit()
                 flash("投票成功")
-                r5.set(ip, ip)
+                r6.set(ip, ip)
             session['vote'] = 0
             return redirect(url_for('main.get_startup', id=startup.id))
     else:
